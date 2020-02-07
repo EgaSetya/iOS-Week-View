@@ -32,6 +32,6 @@ s.resources = 'QVRWeekView/Classes/Xibs/*.xib'
 
 s.frameworks = 'UIKit'
 
-spec.dependency 'SDWebImage'
+s.dependency 'SDWebImage'
 
 end
