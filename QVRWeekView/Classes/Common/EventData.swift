@@ -26,6 +26,8 @@ open class EventData: CustomStringConvertible, Equatable, Hashable {
     public let color: UIColor
     // Stores if event is an all day event
     public let allDay: Bool
+    // Stores image data for event
+    public let imageURLString: String
     // Stores an optional gradient layer which will be used to draw event. Can only be set once.
     private(set) var gradientLayer: CAGradientLayer? { didSet { gradientLayer = oldValue ?? gradientLayer } }
     // Stores an optional dictionary, containing the time of the original event before splitting
@@ -39,7 +41,8 @@ open class EventData: CustomStringConvertible, Equatable, Hashable {
     /**
      Main initializer. All properties.
      */
-    public init(id: String, title: String, startDate: Date, endDate: Date, location: String, color: UIColor, allDay: Bool) {
+    public init(id: String, title: String, startDate: Date, endDate: Date, location: String, color: UIColor, allDay: Bool, imageURLString: String) {
+        self.imageURLString = imageURLString
         self.id = id
         self.title = title
         self.location = location
@@ -57,57 +60,57 @@ open class EventData: CustomStringConvertible, Equatable, Hashable {
     /**
      Convenience initializer. All properties except for Int Id instead of String.
      */
-    public convenience init(id: Int, title: String, startDate: Date, endDate: Date, location: String, color: UIColor, allDay: Bool) {
-        self.init(id: String(id), title: title, startDate: startDate, endDate: endDate, location: location, color: color, allDay: allDay)
+    public convenience init(id: Int, title: String, startDate: Date, endDate: Date, location: String, color: UIColor, allDay: Bool, imageURLString: String) {
+        self.init(id: String(id), title: title, startDate: startDate, endDate: endDate, location: location, color: color, allDay: allDay, imageURLString: imageURLString)
     }
 
     /**
      Convenience initializer. String Id + no allDay parameter.
      */
-    public convenience init(id: String, title: String, startDate: Date, endDate: Date, location: String, color: UIColor) {
-        self.init(id: id, title: title, startDate: startDate, endDate: endDate, location: location, color: color, allDay: false)
+    public convenience init(id: String, title: String, startDate: Date, endDate: Date, location: String, color: UIColor, imageURLString: String) {
+        self.init(id: id, title: title, startDate: startDate, endDate: endDate, location: location, color: color, allDay: false, imageURLString: imageURLString)
     }
 
     /**
      Convenience initializer. Int Id + no allDay parameter.
      */
-    public convenience init(id: Int, title: String, startDate: Date, endDate: Date, location: String, color: UIColor) {
-        self.init(id: id, title: title, startDate: startDate, endDate: endDate, location: location, color: color, allDay: false)
+    public convenience init(id: Int, title: String, startDate: Date, endDate: Date, location: String, color: UIColor, imageURLString: String) {
+        self.init(id: id, title: title, startDate: startDate, endDate: endDate, location: location, color: color, allDay: false, imageURLString: imageURLString)
     }
 
     /**
      Convenience initializer. String Id + no allDay and location parameter.
      */
-    public convenience init(id: String, title: String, startDate: Date, endDate: Date, color: UIColor) {
-        self.init(id: id, title: title, startDate: startDate, endDate: endDate, location: "", color: color, allDay: false)
+    public convenience init(id: String, title: String, startDate: Date, endDate: Date, color: UIColor, imageURLString: String) {
+        self.init(id: id, title: title, startDate: startDate, endDate: endDate, location: "", color: color, allDay: false, imageURLString: imageURLString)
     }
 
     /**
      Convenience initializer. Int Id + no allDay and location parameter.
      */
-    public convenience init(id: Int, title: String, startDate: Date, endDate: Date, color: UIColor) {
-        self.init(id: id, title: title, startDate: startDate, endDate: endDate, location: "", color: color, allDay: false)
+    public convenience init(id: Int, title: String, startDate: Date, endDate: Date, color: UIColor, imageURLString: String) {
+        self.init(id: id, title: title, startDate: startDate, endDate: endDate, location: "", color: color, allDay: false, imageURLString: imageURLString)
     }
 
     /**
      Convenience initializer. Int Id + allDay and no location parameter.
      */
-    public convenience init(id: Int, title: String, startDate: Date, endDate: Date, color: UIColor, allDay: Bool) {
-        self.init(id: id, title: title, startDate: startDate, endDate: endDate, location: "", color: color, allDay: allDay)
+    public convenience init(id: Int, title: String, startDate: Date, endDate: Date, color: UIColor, allDay: Bool, imageURLString: String) {
+        self.init(id: id, title: title, startDate: startDate, endDate: endDate, location: "", color: color, allDay: allDay, imageURLString: imageURLString)
     }
 
     /**
      Convenience initializer. String Id + allDay and no location parameter.
      */
-    public convenience init(id: String, title: String, startDate: Date, endDate: Date, color: UIColor, allDay: Bool) {
-        self.init(id: id, title: title, startDate: startDate, endDate: endDate, location: "", color: color, allDay: allDay)
+    public convenience init(id: String, title: String, startDate: Date, endDate: Date, color: UIColor, allDay: Bool, imageURLString: String) {
+        self.init(id: id, title: title, startDate: startDate, endDate: endDate, location: "", color: color, allDay: allDay, imageURLString: imageURLString)
     }
 
     /**
      Convenience initializer.
      */
     public convenience init() {
-        self.init(id: -1, title: "New Event", startDate: Date(), endDate: Date().addingTimeInterval(TimeInterval(exactly: 10000)!), color: UIColor.blue)
+        self.init(id: -1, title: "New Event", startDate: Date(), endDate: Date().addingTimeInterval(TimeInterval(exactly: 10000)!), color: UIColor.blue, imageURLString: String())
     }
 
     // Static equal comparison operator
@@ -184,19 +187,19 @@ open class EventData: CustomStringConvertible, Equatable, Hashable {
     }
 
     public func remakeEventData(withStart start: Date, andEnd end: Date) -> EventData {
-        let newEvent = EventData(id: self.id, title: self.title, startDate: start, endDate: end, location: self.location, color: self.color, allDay: self.allDay)
+        let newEvent = EventData(id: self.id, title: self.title, startDate: start, endDate: end, location: self.location, color: self.color, allDay: self.allDay, imageURLString: self.imageURLString)
         newEvent.configureGradient(self.gradientLayer)
         return newEvent
     }
 
     public func remakeEventData(withColor color: UIColor) -> EventData {
-        let newEvent = EventData(id: self.id, title: self.title, startDate: self.startDate, endDate: self.endDate, location: self.location, color: color, allDay: self.allDay)
+        let newEvent = EventData(id: self.id, title: self.title, startDate: self.startDate, endDate: self.endDate, location: self.location, color: color, allDay: self.allDay, imageURLString: self.imageURLString)
         newEvent.configureGradient(self.gradientLayer)
         return newEvent
     }
 
     public func remakeEventDataAsAllDay(forDate date: Date) -> EventData {
-        let newEvent = EventData(id: self.id, title: self.title, startDate: date.getStartOfDay(), endDate: date.getEndOfDay(), location: self.location, color: self.color, allDay: true)
+        let newEvent = EventData(id: self.id, title: self.title, startDate: date.getStartOfDay(), endDate: date.getEndOfDay(), location: self.location, color: self.color, allDay: true, imageURLString: self.imageURLString)
         newEvent.configureGradient(self.gradientLayer)
         return newEvent
     }
@@ -271,11 +274,11 @@ open class EventData: CustomStringConvertible, Equatable, Hashable {
 
 // Helper function inserted by Swift 4.2 migrator.
 fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
-	return input.rawValue
+    return input.rawValue
 }
 
 // Helper function inserted by Swift 4.2 migrator.
 fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
-	guard let input = input else { return nil }
-	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value) })
+    guard let input = input else { return nil }
+    return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value) })
 }

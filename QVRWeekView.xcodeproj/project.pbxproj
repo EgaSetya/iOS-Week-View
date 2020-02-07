@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0855A95F80D0336C35CCC84D /* Pods_CalendarWeekView_CalendarWeekViewTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60FD597B618F655E7CE24C61 /* Pods_CalendarWeekView_CalendarWeekViewTests.framework */; };
+		39579C9B043370BD14ED4CE2 /* Pods_QVRWeekView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C740BAE5E621101263B33F3 /* Pods_QVRWeekView.framework */; };
+		6064E17165462D4CE0B63258 /* Pods_QVRWeekView_QVRWeekViewTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E74F6EBE40860520767D19 /* Pods_QVRWeekView_QVRWeekViewTests.framework */; };
 		64988F0F2029D66600C1A3BF /* QVRWeekView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64988F052029D66600C1A3BF /* QVRWeekView.framework */; };
 		64988F142029D66600C1A3BF /* QVRWeekViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64988F132029D66600C1A3BF /* QVRWeekViewTests.swift */; };
 		64988F162029D66600C1A3BF /* QVRWeekView.h in Headers */ = {isa = PBXBuildFile; fileRef = 64988F082029D66600C1A3BF /* QVRWeekView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -30,6 +33,7 @@
 		64A1636F202AFD80002FEF01 /* CalendarWeekView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64A16366202AFD7F002FEF01 /* CalendarWeekView.framework */; };
 		64A16374202AFD80002FEF01 /* CalendarWeekViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A16373202AFD80002FEF01 /* CalendarWeekViewTests.swift */; };
 		64A16376202AFD80002FEF01 /* CalendarWeekView.h in Headers */ = {isa = PBXBuildFile; fileRef = 64A16368202AFD80002FEF01 /* CalendarWeekView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		64EA99F742226B216E0DAFF6 /* Pods_CalendarWeekView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8DACC34F6A824C20CD730B2 /* Pods_CalendarWeekView.framework */; };
 		912D361D2170C99900699638 /* EventData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D361C2170C99900699638 /* EventData.swift */; };
 		912D361F2170C9B600699638 /* HourLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D361E2170C9B600699638 /* HourLabel.swift */; };
 		917247262322E6D900E339DC /* EventLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917247242322E6D900E339DC /* EventLayer.swift */; };
@@ -54,6 +58,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0474DA4DDC15FC5F889A4F96 /* Pods-CalendarWeekView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarWeekView.release.xcconfig"; path = "Target Support Files/Pods-CalendarWeekView/Pods-CalendarWeekView.release.xcconfig"; sourceTree = "<group>"; };
+		2B0046B1ED5D4B2A328435DC /* Pods-QVRWeekView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QVRWeekView.debug.xcconfig"; path = "Target Support Files/Pods-QVRWeekView/Pods-QVRWeekView.debug.xcconfig"; sourceTree = "<group>"; };
+		50E74F6EBE40860520767D19 /* Pods_QVRWeekView_QVRWeekViewTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QVRWeekView_QVRWeekViewTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		60FD597B618F655E7CE24C61 /* Pods_CalendarWeekView_CalendarWeekViewTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CalendarWeekView_CalendarWeekViewTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		64988F052029D66600C1A3BF /* QVRWeekView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = QVRWeekView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		64988F082029D66600C1A3BF /* QVRWeekView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QVRWeekView.h; sourceTree = "<group>"; };
 		64988F092029D66600C1A3BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -83,10 +91,18 @@
 		64A1636E202AFD80002FEF01 /* CalendarWeekViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalendarWeekViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		64A16373202AFD80002FEF01 /* CalendarWeekViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWeekViewTests.swift; sourceTree = "<group>"; };
 		64A16375202AFD80002FEF01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6FC6D4FFF77568401353AFF4 /* Pods-QVRWeekView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QVRWeekView.release.xcconfig"; path = "Target Support Files/Pods-QVRWeekView/Pods-QVRWeekView.release.xcconfig"; sourceTree = "<group>"; };
+		8C740BAE5E621101263B33F3 /* Pods_QVRWeekView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QVRWeekView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		912D361C2170C99900699638 /* EventData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventData.swift; sourceTree = "<group>"; };
 		912D361E2170C9B600699638 /* HourLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HourLabel.swift; sourceTree = "<group>"; };
 		917247242322E6D900E339DC /* EventLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventLayer.swift; sourceTree = "<group>"; };
 		917247252322E6D900E339DC /* ZoomOffsetPreservation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomOffsetPreservation.swift; sourceTree = "<group>"; };
+		A85723F321D11BFD45AB10D5 /* Pods-CalendarWeekView-CalendarWeekViewTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarWeekView-CalendarWeekViewTests.release.xcconfig"; path = "Target Support Files/Pods-CalendarWeekView-CalendarWeekViewTests/Pods-CalendarWeekView-CalendarWeekViewTests.release.xcconfig"; sourceTree = "<group>"; };
+		B3B0F9259E6A0D0A3D4EC2E0 /* Pods-QVRWeekView-QVRWeekViewTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QVRWeekView-QVRWeekViewTests.debug.xcconfig"; path = "Target Support Files/Pods-QVRWeekView-QVRWeekViewTests/Pods-QVRWeekView-QVRWeekViewTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B8DACC34F6A824C20CD730B2 /* Pods_CalendarWeekView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CalendarWeekView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC99619CD95BE39228434C77 /* Pods-CalendarWeekView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarWeekView.debug.xcconfig"; path = "Target Support Files/Pods-CalendarWeekView/Pods-CalendarWeekView.debug.xcconfig"; sourceTree = "<group>"; };
+		F0B3E2E43E2293AE044406A3 /* Pods-QVRWeekView-QVRWeekViewTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QVRWeekView-QVRWeekViewTests.release.xcconfig"; path = "Target Support Files/Pods-QVRWeekView-QVRWeekViewTests/Pods-QVRWeekView-QVRWeekViewTests.release.xcconfig"; sourceTree = "<group>"; };
+		FC19FC5E30247118211F522D /* Pods-CalendarWeekView-CalendarWeekViewTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarWeekView-CalendarWeekViewTests.debug.xcconfig"; path = "Target Support Files/Pods-CalendarWeekView-CalendarWeekViewTests/Pods-CalendarWeekView-CalendarWeekViewTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39579C9B043370BD14ED4CE2 /* Pods_QVRWeekView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +119,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				64988F0F2029D66600C1A3BF /* QVRWeekView.framework in Frameworks */,
+				6064E17165462D4CE0B63258 /* Pods_QVRWeekView_QVRWeekViewTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +127,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64EA99F742226B216E0DAFF6 /* Pods_CalendarWeekView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,6 +136,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				64A1636F202AFD80002FEF01 /* CalendarWeekView.framework in Frameworks */,
+				0855A95F80D0336C35CCC84D /* Pods_CalendarWeekView_CalendarWeekViewTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,6 +151,8 @@
 				64A16367202AFD7F002FEF01 /* CalendarWeekView */,
 				64A16372202AFD80002FEF01 /* CalendarWeekViewTests */,
 				64988F062029D66600C1A3BF /* Products */,
+				AE4B3FB4C7B5ED3D989FE924 /* Pods */,
+				A5465C6986FEC5E3C3526805 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -242,6 +264,33 @@
 			path = CalendarWeekViewTests;
 			sourceTree = "<group>";
 		};
+		A5465C6986FEC5E3C3526805 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B8DACC34F6A824C20CD730B2 /* Pods_CalendarWeekView.framework */,
+				60FD597B618F655E7CE24C61 /* Pods_CalendarWeekView_CalendarWeekViewTests.framework */,
+				8C740BAE5E621101263B33F3 /* Pods_QVRWeekView.framework */,
+				50E74F6EBE40860520767D19 /* Pods_QVRWeekView_QVRWeekViewTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AE4B3FB4C7B5ED3D989FE924 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EC99619CD95BE39228434C77 /* Pods-CalendarWeekView.debug.xcconfig */,
+				0474DA4DDC15FC5F889A4F96 /* Pods-CalendarWeekView.release.xcconfig */,
+				FC19FC5E30247118211F522D /* Pods-CalendarWeekView-CalendarWeekViewTests.debug.xcconfig */,
+				A85723F321D11BFD45AB10D5 /* Pods-CalendarWeekView-CalendarWeekViewTests.release.xcconfig */,
+				2B0046B1ED5D4B2A328435DC /* Pods-QVRWeekView.debug.xcconfig */,
+				6FC6D4FFF77568401353AFF4 /* Pods-QVRWeekView.release.xcconfig */,
+				B3B0F9259E6A0D0A3D4EC2E0 /* Pods-QVRWeekView-QVRWeekViewTests.debug.xcconfig */,
+				F0B3E2E43E2293AE044406A3 /* Pods-QVRWeekView-QVRWeekViewTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -268,6 +317,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 64988F192029D66600C1A3BF /* Build configuration list for PBXNativeTarget "QVRWeekView" */;
 			buildPhases = (
+				41081227CA923634A5A11A85 /* [CP] Check Pods Manifest.lock */,
 				64988F002029D66600C1A3BF /* Sources */,
 				64988F012029D66600C1A3BF /* Frameworks */,
 				64988F022029D66600C1A3BF /* Headers */,
@@ -286,9 +336,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 64988F1C2029D66600C1A3BF /* Build configuration list for PBXNativeTarget "QVRWeekViewTests" */;
 			buildPhases = (
+				E901C930C02275902C67E0C4 /* [CP] Check Pods Manifest.lock */,
 				64988F0A2029D66600C1A3BF /* Sources */,
 				64988F0B2029D66600C1A3BF /* Frameworks */,
 				64988F0C2029D66600C1A3BF /* Resources */,
+				E4C89E64E663A58B4EF911E4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -304,6 +356,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 64A16377202AFD80002FEF01 /* Build configuration list for PBXNativeTarget "CalendarWeekView" */;
 			buildPhases = (
+				94A4A9DF24EC224C9E487916 /* [CP] Check Pods Manifest.lock */,
 				64A16361202AFD7F002FEF01 /* Sources */,
 				64A16362202AFD7F002FEF01 /* Frameworks */,
 				64A16363202AFD7F002FEF01 /* Headers */,
@@ -322,6 +375,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 64A1637A202AFD80002FEF01 /* Build configuration list for PBXNativeTarget "CalendarWeekViewTests" */;
 			buildPhases = (
+				0CE0780009E5035C8BCCDD9D /* [CP] Check Pods Manifest.lock */,
 				64A1636A202AFD80002FEF01 /* Sources */,
 				64A1636B202AFD80002FEF01 /* Frameworks */,
 				64A1636C202AFD80002FEF01 /* Resources */,
@@ -421,6 +475,115 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0CE0780009E5035C8BCCDD9D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CalendarWeekView-CalendarWeekViewTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		41081227CA923634A5A11A85 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-QVRWeekView-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		94A4A9DF24EC224C9E487916 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CalendarWeekView-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E4C89E64E663A58B4EF911E4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-QVRWeekView-QVRWeekViewTests/Pods-QVRWeekView-QVRWeekViewTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-QVRWeekView-QVRWeekViewTests/Pods-QVRWeekView-QVRWeekViewTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E901C930C02275902C67E0C4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-QVRWeekView-QVRWeekViewTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		64988F002029D66600C1A3BF /* Sources */ = {
@@ -605,6 +768,7 @@
 		};
 		64988F1A2029D66600C1A3BF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B0046B1ED5D4B2A328435DC /* Pods-QVRWeekView.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -626,6 +790,7 @@
 		};
 		64988F1B2029D66600C1A3BF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6FC6D4FFF77568401353AFF4 /* Pods-QVRWeekView.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -647,6 +812,7 @@
 		};
 		64988F1D2029D66600C1A3BF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B3B0F9259E6A0D0A3D4EC2E0 /* Pods-QVRWeekView-QVRWeekViewTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -662,6 +828,7 @@
 		};
 		64988F1E2029D66600C1A3BF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F0B3E2E43E2293AE044406A3 /* Pods-QVRWeekView-QVRWeekViewTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -677,6 +844,7 @@
 		};
 		64A16378202AFD80002FEF01 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EC99619CD95BE39228434C77 /* Pods-CalendarWeekView.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -698,6 +866,7 @@
 		};
 		64A16379202AFD80002FEF01 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0474DA4DDC15FC5F889A4F96 /* Pods-CalendarWeekView.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -719,6 +888,7 @@
 		};
 		64A1637B202AFD80002FEF01 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FC19FC5E30247118211F522D /* Pods-CalendarWeekView-CalendarWeekViewTests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QY3PFV67CF;
@@ -734,6 +904,7 @@
 		};
 		64A1637C202AFD80002FEF01 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A85723F321D11BFD45AB10D5 /* Pods-CalendarWeekView-CalendarWeekViewTests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QY3PFV67CF;
