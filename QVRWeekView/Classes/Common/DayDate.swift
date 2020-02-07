@@ -125,7 +125,14 @@ public struct DayDate: Hashable, Comparable, CustomStringConvertible, Strideable
             locale = customLocale
         }
         df.locale = locale
-        return df.string(from: self.dateObj)
+        
+        let str = df.string(from: self.dateObj)
+        
+        if df.dateFormat == "E"{
+            return str.first?.description ?? ""
+        }else{
+            return str
+        }
     }
 
     public func hasPassed() -> Bool {
