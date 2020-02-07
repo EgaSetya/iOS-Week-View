@@ -14,6 +14,18 @@ public extension WeekView {
     // MARK: - WEEKVIEW CUSTOMIZATION -
 
     /**
+        Use image instead of text on EventLayers
+    */
+    @objc var useImageOnEven: Bool{
+        get{
+            return self.initLayerWithImage
+        }
+        set{
+            self.initLayerWithImage = newValue
+        }
+    }
+    
+    /**
      Background color of main scrollview.
      */
     @objc var mainBackgroundColor: UIColor {

@@ -9,6 +9,8 @@ import Foundation
 import SDWebImage
 
 class EventLayer: CALayer {
+    
+    
     override init(layer: Any) {
         super.init(layer: layer)
     }
