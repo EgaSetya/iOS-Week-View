@@ -18,10 +18,11 @@ public extension WeekView {
     */
     @objc var useImageOnEven: Bool{
         get{
-            return self.initLayerWithImage
+            return self.isInitLayerWithImage || self.dayScrollView.isInitLayerWithImage
         }
         set{
-            self.initLayerWithImage = newValue
+            self.isInitLayerWithImage = newValue
+            self.dayScrollView.isInitLayerWithImage = newValue
         }
     }
     

@@ -45,7 +45,7 @@ open class WeekView: UIView {
         return firstActiveDay...(firstActiveDay + Int(LayoutVariables.visibleDays - 1))
     }
     
-    public var initLayerWithImage = false
+    public var isInitLayerWithImage = false
     
     //A date range containing the current days visible on screen
     public var visibleDateRange: ClosedRange<Date> {
@@ -459,7 +459,7 @@ open class WeekView: UIView {
                 previousLayer.removeFromSuperlayer()
             }
             let layer = EventLayer(withFrame: Util.generateAllDayEventFrame(forIndex: indexPath, at: i, max: events.count),
-                                   andEvent: eventData, withImage: initLayerWithImage)
+                                   andEvent: eventData, withImage: isInitLayerWithImage)
             self.eventStyleCallback?(layer, eventData)
             newEventLayers[eventData] = layer
             self.topBarView.layer.addSublayer(layer)

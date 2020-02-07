@@ -11,6 +11,8 @@ import UIKit
 class DayScrollView: UIScrollView, UIScrollViewDelegate,
 UICollectionViewDelegate, UICollectionViewDataSource, DayViewCellDelegate, FrameCalculatorDelegate {
     // MARK: - INTERNAL VARIABLES -
+    
+    public var isInitLayerWithImage = false
 
     // The WeekView that this DayScrollView belongs to
     var weekView: WeekView? {

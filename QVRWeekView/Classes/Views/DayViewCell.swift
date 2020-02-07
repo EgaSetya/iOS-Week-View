@@ -44,6 +44,8 @@ class DayViewCell: UICollectionViewCell, CAAnimationDelegate {
     var addingEvent: Bool = false
     // EventLayer style callback
     var eventStyleCallback: EventStlyeCallback?
+    
+    var isInitLayerWithImage = false
 
     // MARK: - INITIALIZERS & OVERRIDES -
 
@@ -242,7 +244,7 @@ class DayViewCell: UICollectionViewCell, CAAnimationDelegate {
                 newFrame = frame.applying(transform)
                 self.eventFrames[id] = newFrame
             }
-            let eventLayer = EventLayer(withFrame: newFrame, andEvent: event)
+            let eventLayer = EventLayer(withFrame: newFrame, andEvent: event, withImage: isInitLayerWithImage)
             self.eventStyleCallback?(eventLayer, event)
             self.eventLayers.append(eventLayer)
             self.layer.addSublayer(eventLayer)
