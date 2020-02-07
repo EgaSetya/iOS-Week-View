@@ -221,6 +221,7 @@ UICollectionViewDelegate, UICollectionViewDataSource, DayViewCellDelegate, Frame
         if let dayViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: CellKeys.dayViewCell, for: indexPath) as? DayViewCell {
             dayViewCell.clearValues()
             dayViewCell.delegate = self
+            dayViewCell.isInitLayerWithImage = isInitLayerWithImage
             dayViewCell.eventStyleCallback = self.weekView?.eventStyleCallback
             dayViewCells[dayViewCell.id] = dayViewCell
             let dayDateForCell = getDayDate(forIndexPath: indexPath)
