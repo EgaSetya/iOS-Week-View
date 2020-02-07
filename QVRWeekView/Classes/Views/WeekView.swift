@@ -536,7 +536,7 @@ extension WeekView {
         }
     }
     
-    private(set) var roundBottom: Bool {
+    var roundBottom: Bool {
         get {
             return false
         }
