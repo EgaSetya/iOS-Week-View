@@ -535,24 +535,6 @@ extension WeekView {
             self.topLeftBufferHeightConstraint.constant = height
         }
     }
-    
-    var roundBottom: Bool {
-        get {
-            return false
-        }
-        set{
-            if #available(iOS 11.0, *) {
-                self.topBarView.layer.masksToBounds = true
-                self.topBarView.layer.cornerRadius = 8
-                self.topBarView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
-            } else {
-                let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: [.bottomLeft, .bottomRight], cornerRadii: CGSize(width: 8, height: 8))
-                let mask = CAShapeLayer()
-                mask.path = path.cgPath
-                self.topBarView.layer.mask = mask
-            }
-        }
-    }
 }
 
 // MARK: - WEEKVIEW DELEGATE -

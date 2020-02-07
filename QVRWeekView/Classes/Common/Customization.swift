@@ -26,6 +26,27 @@ public extension WeekView {
     }
     
     /**
+        Add var setter to round bottom corner
+    */
+    var roundBottom: Bool {
+        get {
+            return false
+        }
+        set{
+            if #available(iOS 11.0, *) {
+                self.topBarView.layer.masksToBounds = true
+                self.topBarView.layer.cornerRadius = 8
+                self.topBarView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+            } else {
+                let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: [.bottomLeft, .bottomRight], cornerRadii: CGSize(width: 8, height: 8))
+                let mask = CAShapeLayer()
+                mask.path = path.cgPath
+                self.topBarView.layer.mask = mask
+            }
+        }
+    }
+    
+    /**
      Background color of main scrollview.
      */
     @objc var mainBackgroundColor: UIColor {
