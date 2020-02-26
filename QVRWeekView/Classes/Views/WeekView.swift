@@ -14,6 +14,7 @@ public typealias EventStlyeCallback = (CALayer, EventData?) -> Void
 open class WeekView: UIView {
     // MARK: - OUTLETS -
 
+    @IBOutlet var backgroundTopBarView: UIView!
     @IBOutlet var topBarView: UIView!
     @IBOutlet var topLeftBufferView: UIView!
     @IBOutlet var sideBarView: UIView!
@@ -71,6 +72,9 @@ open class WeekView: UIView {
             self.dayScrollView?.dayViewCells.values.forEach({ dayViewCell in dayViewCell.eventStyleCallback = value })
         }
     }
+    
+    // Boolean of rounded top bar view
+    public var isRoundedBottom = false
 
     // MARK: - PRIVATE VARIABLES -
 

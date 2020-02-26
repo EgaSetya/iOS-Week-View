@@ -66,8 +66,8 @@ struct LayoutDefaults {
     static let sideBarWidth = CGFloat(25)
 
     // Horizontal spacing of day view cells
-    static let portraitDayViewHorizontalSpacing = CGFloat(5)
-    static let landscapeDayViewHorizontalSpacing = CGFloat(1)
+    static let portraitDayViewHorizontalSpacing = CGFloat(0)
+    static let landscapeDayViewHorizontalSpacing = CGFloat(0)
 
     // Vertical spacing of day view cells
     static let portraitDayViewVerticalSpacing = CGFloat(15)

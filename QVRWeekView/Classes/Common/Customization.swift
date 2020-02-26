@@ -28,20 +28,23 @@ public extension WeekView {
     /**
         Add var setter to round bottom corner
     */
-    var roundBottom: Bool {
+    @objc var roundBottom: Bool {
         get {
-            return false
+            return self.isRoundedBottom
         }
         set{
+            self.isRoundedBottom = newValue
+            
+            self.backgroundTopBarView.backgroundColor = topBarColor
+            
             if #available(iOS 11.0, *) {
-                self.topBarView.layer.masksToBounds = true
-                self.topBarView.layer.cornerRadius = 8
-                self.topBarView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+                self.backgroundTopBarView.layer.cornerRadius = 12
+                self.backgroundTopBarView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
             } else {
-                let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: [.bottomLeft, .bottomRight], cornerRadii: CGSize(width: 8, height: 8))
+                let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: [.bottomLeft, .bottomRight], cornerRadii: CGSize(width: 12, height: 12))
                 let mask = CAShapeLayer()
                 mask.path = path.cgPath
-                self.topBarView.layer.mask = mask
+                self.backgroundTopBarView.layer.mask = mask
             }
         }
     }
@@ -80,8 +83,13 @@ public extension WeekView {
             return self.topBarView.backgroundColor!
         }
         set(color) {
-            self.topLeftBufferView.backgroundColor = color
-            self.topBarView.backgroundColor = color
+            if self.roundBottom{
+                self.topBarView.backgroundColor = .clear
+                self.topLeftBufferView.backgroundColor = .clear
+            }else{
+                self.topBarView.backgroundColor = color
+                self.topLeftBufferView.backgroundColor = color
+            }
         }
     }
 

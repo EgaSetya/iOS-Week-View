@@ -71,6 +71,10 @@ class DayViewCell: UICollectionViewCell, CAAnimationDelegate {
         self.hourIndicatorView.layer.cornerRadius = 1
         self.overlayView.addSubview(hourIndicatorView)
         self.addSubview(overlayView)
+        
+        // Add left right border
+        self.layer.borderColor = LayoutVariables.mainSeparatorColor.cgColor
+        self.layer.borderWidth = 0.5
     }
 
     override func layoutSubviews() {

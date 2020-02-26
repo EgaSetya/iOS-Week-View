@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WeekView" customModule="QVRWeekView" customModuleProvider="target">
             <connections>
+                <outlet property="backgroundTopBarView" destination="01P-Sd-XQO" id="4XU-86-A5W"/>
                 <outlet property="dayScrollView" destination="dhg-SP-fAj" id="bUp-E7-Ixh"/>
                 <outlet property="hourSideBarHeightConstraint" destination="dBr-bh-Ky5" id="7Oc-p1-rPJ"/>
                 <outlet property="hourSideBarYPositionConstraint" destination="257-A5-8hg" id="na7-fq-o5l"/>
@@ -55,6 +54,10 @@
                         <constraint firstAttribute="height" constant="632" id="jQr-zE-7Aq"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="01P-Sd-XQO">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="35"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vcr-a0-fjB" userLabel="TopBarView">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="35"/>
                     <color key="backgroundColor" red="0.86274516582489014" green="0.86274510622024536" blue="0.86274516582489014" alpha="1" colorSpace="deviceRGB"/>
@@ -74,6 +77,8 @@
             </subviews>
             <color key="backgroundColor" red="0.792156862745098" green="0.792156862745098" blue="0.792156862745098" alpha="1" colorSpace="deviceRGB"/>
             <constraints>
+                <constraint firstItem="01P-Sd-XQO" firstAttribute="height" secondItem="Vcr-a0-fjB" secondAttribute="height" id="9Rf-Oa-ExS"/>
+                <constraint firstItem="01P-Sd-XQO" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="GEp-ix-PAr"/>
                 <constraint firstItem="uo6-Ir-nWX" firstAttribute="top" secondItem="1h4-ry-XKA" secondAttribute="bottom" id="L45-UD-6z8"/>
                 <constraint firstItem="uo6-Ir-nWX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Qw0-7F-nQe"/>
                 <constraint firstItem="1h4-ry-XKA" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="SEc-ry-pnn"/>
@@ -81,11 +86,13 @@
                 <constraint firstItem="Vcr-a0-fjB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="TDe-6Z-79M"/>
                 <constraint firstItem="Vcr-a0-fjB" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="czS-7n-9iX"/>
                 <constraint firstAttribute="trailing" secondItem="dhg-SP-fAj" secondAttribute="trailing" id="eQV-RG-J6a"/>
+                <constraint firstItem="01P-Sd-XQO" firstAttribute="centerY" secondItem="Vcr-a0-fjB" secondAttribute="centerY" id="ewv-3l-cyb"/>
+                <constraint firstAttribute="trailing" secondItem="01P-Sd-XQO" secondAttribute="trailing" id="nic-tG-vOG"/>
                 <constraint firstItem="dhg-SP-fAj" firstAttribute="leading" secondItem="uo6-Ir-nWX" secondAttribute="trailing" id="qQm-hm-3PC"/>
                 <constraint firstAttribute="bottom" secondItem="dhg-SP-fAj" secondAttribute="bottom" id="tDn-9J-gJV"/>
                 <constraint firstItem="dhg-SP-fAj" firstAttribute="top" secondItem="Vcr-a0-fjB" secondAttribute="bottom" id="v93-Al-3Ms"/>
             </constraints>
-            <point key="canvasLocation" x="33.5" y="53.5"/>
+            <point key="canvasLocation" x="32.799999999999997" y="52.623688155922046"/>
         </view>
     </objects>
 </document>

@@ -128,11 +128,7 @@ public struct DayDate: Hashable, Comparable, CustomStringConvertible, Strideable
         
         let str = df.string(from: self.dateObj)
         
-        if df.dateFormat == "E"{
-            return str.first?.description ?? ""
-        }else{
-            return str
-        }
+        return str
     }
 
     public func hasPassed() -> Bool {

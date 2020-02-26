@@ -192,6 +192,11 @@ UICollectionViewDelegate, UICollectionViewDataSource, DayViewCellDelegate, Frame
                 }
             }
         }
+        
+        //disable horizontal scrolling
+        if scrollView.contentOffset.x != 0 {
+            scrollView.contentOffset.x = 0
+        }
     }
 
     func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
