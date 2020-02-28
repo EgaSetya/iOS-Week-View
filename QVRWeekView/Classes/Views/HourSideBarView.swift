@@ -68,6 +68,7 @@ class HourSideBarView: UIView {
             self.view!.frame = self.bounds
             self.view!.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             self.addSubview(self.view!)
+            self.addSubview(self.view!)
         }
         self.backgroundColor = UIColor.clear
 

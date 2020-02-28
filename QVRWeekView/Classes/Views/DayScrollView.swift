@@ -171,6 +171,7 @@ UICollectionViewDelegate, UICollectionViewDataSource, DayViewCellDelegate, Frame
         self.weekView?.updateTopAndSideBarPositions()
 
         if let collectionView = scrollView as? DayCollectionView {
+            
             if collectionView.contentOffset.x < LayoutVariables.minOffsetX {
                 resetView(withYearOffsetChange: -1)
             }
@@ -191,11 +192,6 @@ UICollectionViewDelegate, UICollectionViewDataSource, DayViewCellDelegate, Frame
                     updatePeriod()
                 }
             }
-        }
-        
-        //disable horizontal scrolling
-        if scrollView.contentOffset.x != 0 {
-            scrollView.contentOffset.x = 0
         }
     }
 
@@ -219,7 +215,7 @@ UICollectionViewDelegate, UICollectionViewDataSource, DayViewCellDelegate, Frame
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return LayoutVariables.collectionViewCellCount
+        return 7
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
