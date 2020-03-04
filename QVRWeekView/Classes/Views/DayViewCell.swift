@@ -149,6 +149,23 @@ class DayViewCell: UICollectionViewCell, CAAnimationDelegate {
             if frame.contains(tapPoint) && eventsData[id] != nil {
                 self.delegate?.eventViewWasTappedIn(self, withEventData: eventsData[id]!)
                 return
+            }else{
+                let yTouch = sender.location(ofTouch: 0, in: self).y
+                let previewPos = self.previewPosition(forYCoordinate: yTouch)
+                
+                self.makePreviewLayer(at: previewPos, isClear: true)
+                
+                guard let prevLayer = self.previewLayer else { return }
+                
+                let time = Double( ((prevLayer.position.y-(hourHeight*CGFloat(LayoutVariables.previewEventHeightInHours/2)))/self.frame.height)*24 )
+                
+                let rounded = time.roundToNearest(LayoutVariables.previewEventPrecisionInMinutes/60.0)
+                let hours = Int(rounded)
+                let minutes = Int((rounded-Double(hours))*60.0)
+                
+                self.delegate?.dayViewCellDidTapped(self, hours: hours, minutes: minutes)
+                
+                break
             }
         }
     }
@@ -282,7 +299,7 @@ class DayViewCell: UICollectionViewCell, CAAnimationDelegate {
         }
     }
 
-    private func makePreviewLayer(at position: CGPoint) {
+    private func makePreviewLayer(at position: CGPoint, isClear: Bool = false) {
         removePreviewLayer()
 
         let startingBounds = CGRect(origin: position, size: CGSize(width: 0, height: 0))
@@ -290,7 +307,7 @@ class DayViewCell: UICollectionViewCell, CAAnimationDelegate {
 
         let previewLayer = CALayer()
         previewLayer.frame = startingBounds
-        previewLayer.backgroundColor = LayoutVariables.previewEventColor.cgColor
+        previewLayer.backgroundColor = isClear ? UIColor.clear.cgColor : LayoutVariables.previewEventColor.cgColor
         previewLayer.masksToBounds = true
 
         let textLayer = CATextLayer()
@@ -381,6 +398,8 @@ protocol DayViewCellDelegate: class {
     func dayViewCellWasLongPressed(_ dayViewCell: DayViewCell, hours: Int, minutes: Int)
 
     func eventViewWasTappedIn(_ dayViewCell: DayViewCell, withEventData eventData: EventData)
+    
+    func dayViewCellDidTapped(_ dayViewCell: DayViewCell, hours: Int, minutes: Int)
 
 }
 

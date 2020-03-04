@@ -49,7 +49,7 @@ struct LayoutDefaults {
     static let eventLabelVerticalTextPadding = CGFloat(2)
 
     // Default text of preview event
-    static let previewEventText = "New Item"
+    static let previewEventText = ""
     // Default color of the preview event
     static let previewEventColor = UIColor(red: CGFloat(drand48()), green: CGFloat(drand48()), blue: CGFloat(drand48()), alpha: 0.5)
     // Default height of the preview event in hours

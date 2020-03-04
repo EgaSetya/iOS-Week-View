@@ -166,7 +166,13 @@ UICollectionViewDelegate, UICollectionViewDataSource, DayViewCellDelegate, Frame
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-
+        
+        if scrollView.isTracking || scrollView.isDragging{
+            if scrollView.contentOffset.x != 0 {
+                scrollView.contentOffset.x = 0
+            }
+        }
+        
         // Handle side and top bar animations
         self.weekView?.updateTopAndSideBarPositions()
 
@@ -201,7 +207,7 @@ UICollectionViewDelegate, UICollectionViewDataSource, DayViewCellDelegate, Frame
             requestEvents()
         }
     }
-
+    
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if !decelerate {
             self.weekView?.didEndVerticalScrolling(self)
@@ -215,7 +221,7 @@ UICollectionViewDelegate, UICollectionViewDataSource, DayViewCellDelegate, Frame
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 7
+        return LayoutVariables.collectionViewCellCount
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -261,6 +267,13 @@ UICollectionViewDelegate, UICollectionViewDataSource, DayViewCellDelegate, Frame
 
     func dayViewCellWasLongPressed(_ dayViewCell: DayViewCell, hours: Int, minutes: Int) {
         self.weekView?.dayViewCellWasLongPressed(dayViewCell, at: hours, and: minutes)
+        for (_, dayViewCell) in dayViewCells {
+            dayViewCell.addingEvent = true
+        }
+    }
+    
+    func dayViewCellDidTapped(_ dayViewCell: DayViewCell, hours: Int, minutes: Int) {
+        self.weekView?.dayViewCellDidTapped(dayViewCell, at: hours, and: minutes)
         for (_, dayViewCell) in dayViewCells {
             dayViewCell.addingEvent = true
         }

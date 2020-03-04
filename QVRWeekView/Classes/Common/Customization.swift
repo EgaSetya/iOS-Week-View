@@ -86,11 +86,9 @@ public extension WeekView {
             if self.roundBottom{
                 self.topBarView.backgroundColor = .clear
                 self.topLeftBufferView.backgroundColor = .clear
-                self.backgroundTopBarView.backgroundColor = color
             }else{
                 self.topBarView.backgroundColor = color
                 self.topLeftBufferView.backgroundColor = color
-                self.backgroundTopBarView.backgroundColor = .clear
             }
         }
     }

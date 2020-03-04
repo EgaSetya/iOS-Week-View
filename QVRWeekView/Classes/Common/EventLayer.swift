@@ -24,6 +24,9 @@ class EventLayer: CALayer {
         if let gradient = event.getGradientLayer(withFrame: frame) {
             self.backgroundColor = UIColor.clear.cgColor
             self.addSublayer(gradient)
+            
+            self.masksToBounds = true
+            self.cornerRadius = 4
         } else {
             self.backgroundColor = event.color.cgColor
         }
@@ -40,10 +43,10 @@ class EventLayer: CALayer {
                                       height: imageWidthHeight)
             
             let urlString = URL(string: event.imageURLString)
-            SDWebImageManager.shared()?.imageDownloader.downloadImage(with: urlString, options: .continueInBackground, progress: nil, completed: { (image, _, _, _) in
+            SDWebImageManager.shared.loadImage(with: urlString, options: .continueInBackground, progress: nil) { (image, data, error, SDImageCacheType, true, urlString) in
                 
                 imageLayer.contents = image?.cgImage
-            })
+            }
             
             self.addSublayer(imageLayer)
         }else{
