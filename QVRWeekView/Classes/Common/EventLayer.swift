@@ -15,7 +15,7 @@ class EventLayer: CALayer {
         super.init(layer: layer)
     }
 
-    init(withFrame frame: CGRect, andEvent event: EventData, withImage: Bool = false) {
+    init(withFrame frame: CGRect, andEvent event: EventData, withImage: Bool = false, isPlain: Bool = false) {
         super.init()
         self.bounds = frame
         self.frame = frame
@@ -30,40 +30,42 @@ class EventLayer: CALayer {
         } else {
             self.backgroundColor = event.color.cgColor
         }
-
-        if withImage{
-            // Configure event layer with image
-            let imageWidthHeight = frame.height > frame.width ? frame.width/2 : frame.height/2
-            
-            let imageLayer = CALayer()
-            imageLayer.backgroundColor = UIColor.clear.cgColor
-            imageLayer.frame = CGRect(x: self.bounds.midX - imageWidthHeight/2,
-                                      y: self.bounds.midY - imageWidthHeight/2,
-                                      width: imageWidthHeight,
-                                      height: imageWidthHeight)
-            
-            let urlString = URL(string: event.imageURLString)
-            SDWebImageManager.shared.loadImage(with: urlString, options: .continueInBackground, progress: nil) { (image, data, error, SDImageCacheType, true, urlString) in
+        
+        if !isPlain{
+            if withImage{
+                // Configure event layer with image
+                let imageWidthHeight = frame.height > frame.width ? frame.width/2 : frame.height/2
                 
-                imageLayer.contents = image?.cgImage
-            }
-            
-            self.addSublayer(imageLayer)
-        }else{
-            // Configure event layer with text
-            let eventTextLayer = CATextLayer()
-            eventTextLayer.isWrapped = true
-            eventTextLayer.contentsScale = UIScreen.main.scale
-            eventTextLayer.string = event.getDisplayString()
+                let imageLayer = CALayer()
+                imageLayer.backgroundColor = UIColor.clear.cgColor
+                imageLayer.frame = CGRect(x: self.bounds.midX - imageWidthHeight/2,
+                                          y: self.bounds.midY - imageWidthHeight/2,
+                                          width: imageWidthHeight,
+                                          height: imageWidthHeight)
+                
+                let urlString = URL(string: event.imageURLString)
+                SDWebImageManager.shared.loadImage(with: urlString, options: .continueInBackground, progress: nil) { (image, data, error, SDImageCacheType, true, urlString) in
+                    
+                    imageLayer.contents = image?.cgImage
+                }
+                
+                self.addSublayer(imageLayer)
+            }else{
+                // Configure event layer with text
+                let eventTextLayer = CATextLayer()
+                eventTextLayer.isWrapped = true
+                eventTextLayer.contentsScale = UIScreen.main.scale
+                eventTextLayer.string = event.getDisplayString()
 
-            let xPadding = TextVariables.eventLabelHorizontalTextPadding
-            let yPadding = TextVariables.eventLabelVerticalTextPadding
-            eventTextLayer.frame = CGRect(x: frame.origin.x + xPadding,
-                                          y: frame.origin.y + yPadding,
-                                          width: frame.width - 2*xPadding,
-                                          height: frame.height - 2*yPadding)
-            
-            self.addSublayer(eventTextLayer)
+                let xPadding = TextVariables.eventLabelHorizontalTextPadding
+                let yPadding = TextVariables.eventLabelVerticalTextPadding
+                eventTextLayer.frame = CGRect(x: frame.origin.x + xPadding,
+                                              y: frame.origin.y + yPadding,
+                                              width: frame.width - 2*xPadding,
+                                              height: frame.height - 2*yPadding)
+                
+                self.addSublayer(eventTextLayer)
+            }
         }
         
     }

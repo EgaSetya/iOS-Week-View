@@ -46,6 +46,7 @@ class DayViewCell: UICollectionViewCell, CAAnimationDelegate {
     var eventStyleCallback: EventStlyeCallback?
     
     var isInitLayerWithImage = false
+    var isUsingPlainEvent = false
 
     // MARK: - INITIALIZERS & OVERRIDES -
 
@@ -145,29 +146,37 @@ class DayViewCell: UICollectionViewCell, CAAnimationDelegate {
 
     @objc func tapAction(_ sender: UITapGestureRecognizer) {
         let tapPoint = sender.location(in: self)
-        for (id, frame) in eventFrames {
-            if frame.contains(tapPoint) && eventsData[id] != nil {
-                self.delegate?.eventViewWasTappedIn(self, withEventData: eventsData[id]!)
-                return
-            }else{
-                let yTouch = sender.location(ofTouch: 0, in: self).y
-                let previewPos = self.previewPosition(forYCoordinate: yTouch)
-                
-                self.makePreviewLayer(at: previewPos, isClear: true)
-                
-                guard let prevLayer = self.previewLayer else { return }
-                
-                let time = Double( ((prevLayer.position.y-(hourHeight*CGFloat(LayoutVariables.previewEventHeightInHours/2)))/self.frame.height)*24 )
-                
-                let rounded = time.roundToNearest(LayoutVariables.previewEventPrecisionInMinutes/60.0)
-                let hours = Int(rounded)
-                let minutes = Int((rounded-Double(hours))*60.0)
-                
-                self.delegate?.dayViewCellDidTapped(self, hours: hours, minutes: minutes)
-                
-                break
+        if eventFrames.isEmpty{
+            addEventByTap(tapPoint: tapPoint)
+        }else{
+            for (id, frame) in eventFrames {
+                if frame.contains(tapPoint) && eventsData[id] != nil {
+                    self.delegate?.eventViewWasTappedIn(self, withEventData: eventsData[id]!)
+                    return
+                }else{
+                    addEventByTap(tapPoint: tapPoint)
+                    break
+                }
             }
         }
+    }
+    
+    func addEventByTap(tapPoint: CGPoint){
+        let yTouch = tapPoint.y
+        let previewPos = self.previewPosition(forYCoordinate: yTouch)
+        
+        self.makePreviewLayer(at: previewPos, isClear: true)
+        
+        guard let prevLayer = self.previewLayer else { return }
+        
+        let time = Double( ((prevLayer.position.y-(hourHeight*CGFloat(LayoutVariables.previewEventHeightInHours/2)))/self.frame.height)*24 )
+        
+        let rounded = time.roundToNearest(LayoutVariables.previewEventPrecisionInMinutes/60.0)
+        let hours = Int(rounded)
+        let minutes = Int((rounded-Double(hours))*60.0)
+        
+        self.delegate?.dayViewCellDidTapped(self, hours: hours, minutes: minutes)
+        
     }
 
     func updateEventTextFontSize() {
@@ -265,7 +274,7 @@ class DayViewCell: UICollectionViewCell, CAAnimationDelegate {
                 newFrame = frame.applying(transform)
                 self.eventFrames[id] = newFrame
             }
-            let eventLayer = EventLayer(withFrame: newFrame, andEvent: event, withImage: isInitLayerWithImage)
+            let eventLayer = EventLayer(withFrame: newFrame, andEvent: event, withImage: isInitLayerWithImage, isPlain: isUsingPlainEvent)
             self.eventStyleCallback?(eventLayer, event)
             self.eventLayers.append(eventLayer)
             self.layer.addSublayer(eventLayer)

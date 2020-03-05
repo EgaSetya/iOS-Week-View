@@ -16,7 +16,19 @@ public extension WeekView {
     /**
         Use image instead of text on EventLayers
     */
-    @objc var useImageOnEven: Bool{
+    @objc var usePlainEvent: Bool{
+        get{
+            return self.dayScrollView.isUsingPlainEvent
+        }
+        set{
+            self.dayScrollView.isUsingPlainEvent = newValue
+        }
+    }
+    
+    /**
+        Use image instead of text on EventLayers
+    */
+    @objc var useImageOnEvent: Bool{
         get{
             return self.dayScrollView.isInitLayerWithImage
         }
