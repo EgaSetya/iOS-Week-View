@@ -44,10 +44,10 @@ class EventLayer: CALayer {
                                           height: imageWidthHeight)
                 
                 let urlString = URL(string: event.imageURLString)
-                SDWebImageManager.shared.loadImage(with: urlString, options: .continueInBackground, progress: nil) { (image, data, error, SDImageCacheType, true, urlString) in
+                SDWebImageManager.shared()?.imageDownloader.downloadImage(with: urlString, options: .continueInBackground, progress: nil, completed: { (image, _, _, _) in
                     
                     imageLayer.contents = image?.cgImage
-                }
+                })
                 
                 self.addSublayer(imageLayer)
             }else{
