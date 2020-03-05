@@ -47,8 +47,6 @@ public extension WeekView {
         set{
             self.isRoundedBottom = newValue
             
-            self.backgroundTopBarView.backgroundColor = topBarColor
-            
             if #available(iOS 11.0, *) {
                 self.backgroundTopBarView.layer.cornerRadius = 12
                 self.backgroundTopBarView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
@@ -98,9 +96,11 @@ public extension WeekView {
             if self.roundBottom{
                 self.topBarView.backgroundColor = .clear
                 self.topLeftBufferView.backgroundColor = .clear
+                self.backgroundTopBarView.backgroundColor = color
             }else{
                 self.topBarView.backgroundColor = color
                 self.topLeftBufferView.backgroundColor = color
+                self.backgroundTopBarView.backgroundColor = .clear
             }
         }
     }
