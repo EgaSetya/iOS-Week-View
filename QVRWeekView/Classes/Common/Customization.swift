@@ -50,11 +50,14 @@ public extension WeekView {
             if #available(iOS 11.0, *) {
                 self.backgroundTopBarView.layer.cornerRadius = 12
                 self.backgroundTopBarView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+                self.topBarHourView.layer.cornerRadius = 12
+                self.topBarHourView.layer.maskedCorners = [.layerMinXMaxYCorner]
             } else {
                 let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: [.bottomLeft, .bottomRight], cornerRadii: CGSize(width: 12, height: 12))
                 let mask = CAShapeLayer()
                 mask.path = path.cgPath
                 self.backgroundTopBarView.layer.mask = mask
+                self.topBarHourView.layer.mask = mask
             }
         }
     }
@@ -102,6 +105,7 @@ public extension WeekView {
                 self.topBarView.backgroundColor = color
                 self.topLeftBufferView.backgroundColor = color
                 self.backgroundTopBarView.backgroundColor = .clear
+                self.topBarHourView.backgroundColor = .clear
             }
         }
     }
