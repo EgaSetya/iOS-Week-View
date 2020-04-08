@@ -97,6 +97,7 @@ public extension WeekView {
                 self.topBarView.backgroundColor = .clear
                 self.topLeftBufferView.backgroundColor = .clear
                 self.backgroundTopBarView.backgroundColor = color
+                self.topBarHourView.backgroundColor = color
             }else{
                 self.topBarView.backgroundColor = color
                 self.topLeftBufferView.backgroundColor = color
