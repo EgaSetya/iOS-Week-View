@@ -148,17 +148,17 @@ class DayViewCell: UICollectionViewCell, CAAnimationDelegate {
         let tapPoint = sender.location(in: self)
         if eventFrames.isEmpty{
             addEventByTap(tapPoint: tapPoint)
+            return
         }else{
             for (id, frame) in eventFrames {
                 if frame.contains(tapPoint) && eventsData[id] != nil {
                     self.delegate?.eventViewWasTappedIn(self, withEventData: eventsData[id]!)
                     return
-                }else{
-                    addEventByTap(tapPoint: tapPoint)
-                    break
                 }
             }
         }
+
+        addEventByTap(tapPoint: tapPoint)
     }
     
     func addEventByTap(tapPoint: CGPoint){
