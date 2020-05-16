@@ -72,6 +72,10 @@ class DayViewCell: UICollectionViewCell, CAAnimationDelegate {
         self.hourIndicatorView.layer.cornerRadius = 1
         self.overlayView.addSubview(hourIndicatorView)
         self.addSubview(overlayView)
+        
+        // Add left right border
+        self.layer.borderColor = self.layout.mainSeparatorColor.cgColor
+        self.layer.borderWidth = 0.5
     }
 
     override func layoutSubviews() {
@@ -304,7 +308,7 @@ class DayViewCell: UICollectionViewCell, CAAnimationDelegate {
 
         let previewLayer = CALayer()
         previewLayer.frame = startingBounds
-        previewLayer.backgroundColor = self.layout.previewEventColor.cgColor
+        previewLayer.backgroundColor = isClear ? UIColor.clear.cgColor : self.layout.previewEventColor.cgColor
         previewLayer.masksToBounds = true
 
         let textLayer = CATextLayer()
@@ -402,11 +406,11 @@ protocol DayViewCellDelegate: class {
 
 // Helper function inserted by Swift 4.2 migrator.
 fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
-	return input.rawValue
+    return input.rawValue
 }
 
 // Helper function inserted by Swift 4.2 migrator.
 fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
-	guard let input = input else { return nil }
-	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value) })
+    guard let input = input else { return nil }
+    return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value) })
 }
