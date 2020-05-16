@@ -61,32 +61,6 @@ public extension WeekView {
             }
         }
     }
-    
-    /**
-     Background color of main scrollview.
-     */
-    @objc var mainBackgroundColor: UIColor {
-        get {
-            return self.mainView.backgroundColor!
-        }
-        set(color) {
-            self.mainView.backgroundColor = color
-            self.sideBarView.backgroundColor = color
-        }
-    }
-
-    /**
-     Default height of the top bar
-     */
-    @objc var defaultTopBarHeight: CGFloat {
-        get {
-            return LayoutVariables.defaultTopBarHeight
-        }
-        set(height) {
-            LayoutVariables.defaultTopBarHeight = height
-            updateVisibleLabelsAndMainConstraints()
-        }
-    }
 
     /**
      Background color of top bar containing day labels.

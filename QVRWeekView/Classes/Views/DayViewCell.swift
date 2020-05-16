@@ -69,10 +69,6 @@ class DayViewCell: UICollectionViewCell, CAAnimationDelegate {
         self.hourIndicatorView.layer.cornerRadius = 1
         self.overlayView.addSubview(hourIndicatorView)
         self.addSubview(overlayView)
-        
-        // Add left right border
-        self.layer.borderColor = LayoutVariables.mainSeparatorColor.cgColor
-        self.layer.borderWidth = 0.5
     }
 
     override func layoutSubviews() {
@@ -162,7 +158,7 @@ class DayViewCell: UICollectionViewCell, CAAnimationDelegate {
         
         guard let prevLayer = self.previewLayer else { return }
         
-        let time = Double( ((prevLayer.position.y-(hourHeight*CGFloat(LayoutVariables.previewEventHeightInHours/2)))/self.frame.height)*24 )
+        let time = Double( ((prevLayer.position.y-(hourHeight*CGFloat(self.layout.previewEventHourHeight / 2)))/self.frame.height)*24 )
         
         let rounded = time.roundToNearest(LayoutVariables.previewEventPrecisionInMinutes/60.0)
         let hours = Int(rounded)

@@ -109,7 +109,7 @@ open class EventData: NSObject, NSCoding {
     /**
      Convenience initializer.
      */
-    public convenience init() {
+    public convenience override init() {
         self.init(id: -1, title: "New Event", startDate: Date(), endDate: Date().addingTimeInterval(TimeInterval(exactly: 10000)!), color: UIColor.blue, imageURLString: String())
     }
 

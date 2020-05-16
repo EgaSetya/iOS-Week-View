@@ -79,11 +79,6 @@ open class WeekView: UIView {
         get { self.mainView.backgroundColor! }
         set(color) { self.mainView.backgroundColor = color; self.sideBarView.backgroundColor = color }
     }
-    // Background color of top bar containing day labels.
-    @objc public var topBarColor: UIColor {
-        get { self.topBarView.backgroundColor! }
-        set(color) { self.topLeftBufferView.backgroundColor = color; self.topBarView.backgroundColor = color }
-    }
     // Color of the side bar containing hour labels.
     @objc public var sideBarColor: UIColor {
         get { self.sideBarView.backgroundColor! }
