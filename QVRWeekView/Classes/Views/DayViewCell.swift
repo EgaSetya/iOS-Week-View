@@ -163,7 +163,7 @@ class DayViewCell: UICollectionViewCell, CAAnimationDelegate {
         
         let time = Double( ((prevLayer.position.y-(hourHeight*CGFloat(self.layout.previewEventHourHeight / 2)))/self.frame.height)*24 )
         
-        let rounded = time.roundToNearest(LayoutVariables.previewEventPrecisionInMinutes/60.0)
+        let rounded = time.roundToNearest(self.layout.previewEventMinutePrecision / 60.0)
         let hours = Int(rounded)
         let minutes = Int((rounded-Double(hours))*60.0)
         
