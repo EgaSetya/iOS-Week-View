@@ -44,6 +44,9 @@ class DayViewCell: UICollectionViewCell, CAAnimationDelegate {
     var addingEvent: Bool = false
     // Customisable layout object. Starts with default, but soon replaced.
     var layout: DayViewCellLayout = DayViewCellLayout()
+    
+    var isInitLayerWithImage = false
+    var isUsingPlainEvent = false
 
     // MARK: - INITIALIZERS & OVERRIDES -
 

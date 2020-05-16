@@ -30,12 +30,12 @@ open class EventData: NSObject, NSCoding {
     public let imageURLString: String
     // Stores an optional gradient layer which will be used to draw event. Can only be set once.
     private(set) var gradientLayer: CAGradientLayer? { didSet { gradientLayer = oldValue ?? gradientLayer } }
-
+    
     // String descriptor
     override public var description: String {
         return "[Event: {id: \(id), startDate: \(startDate), endDate: \(endDate)}]\n"
     }
-
+    
     /**
      Main initializer. All properties.
      */
@@ -45,6 +45,7 @@ open class EventData: NSObject, NSCoding {
         self.location = location
         self.color = color
         self.allDay = allDay
+        self.imageURLString = imageURLString
         guard startDate.compare(endDate).rawValue <= 0 else {
             self.startDate = startDate
             self.endDate = startDate
@@ -56,63 +57,63 @@ open class EventData: NSObject, NSCoding {
         super.init()
         self.configureGradient(gradientLayer)
     }
-
+    
     /**
      Convenience initializer. All properties except for Int Id instead of String.
      */
     public convenience init(id: Int, title: String, startDate: Date, endDate: Date, location: String, color: UIColor, allDay: Bool, imageURLString: String) {
         self.init(id: String(id), title: title, startDate: startDate, endDate: endDate, location: location, color: color, allDay: allDay, imageURLString: imageURLString)
     }
-
+    
     /**
      Convenience initializer. String Id + no allDay parameter.
      */
     public convenience init(id: String, title: String, startDate: Date, endDate: Date, location: String, color: UIColor, imageURLString: String) {
         self.init(id: id, title: title, startDate: startDate, endDate: endDate, location: location, color: color, allDay: false, imageURLString: imageURLString)
     }
-
+    
     /**
      Convenience initializer. Int Id + no allDay parameter.
      */
     public convenience init(id: Int, title: String, startDate: Date, endDate: Date, location: String, color: UIColor, imageURLString: String) {
         self.init(id: id, title: title, startDate: startDate, endDate: endDate, location: location, color: color, allDay: false, imageURLString: imageURLString)
     }
-
+    
     /**
      Convenience initializer. String Id + no allDay and location parameter.
      */
     public convenience init(id: String, title: String, startDate: Date, endDate: Date, color: UIColor, imageURLString: String) {
         self.init(id: id, title: title, startDate: startDate, endDate: endDate, location: "", color: color, allDay: false, imageURLString: imageURLString)
     }
-
+    
     /**
      Convenience initializer. Int Id + no allDay and location parameter.
      */
     public convenience init(id: Int, title: String, startDate: Date, endDate: Date, color: UIColor, imageURLString: String) {
         self.init(id: id, title: title, startDate: startDate, endDate: endDate, location: "", color: color, allDay: false, imageURLString: imageURLString)
     }
-
+    
     /**
      Convenience initializer. Int Id + allDay and no location parameter.
      */
     public convenience init(id: Int, title: String, startDate: Date, endDate: Date, color: UIColor, allDay: Bool, imageURLString: String) {
         self.init(id: id, title: title, startDate: startDate, endDate: endDate, location: "", color: color, allDay: allDay, imageURLString: imageURLString)
     }
-
+    
     /**
      Convenience initializer. String Id + allDay and no location parameter.
      */
     public convenience init(id: String, title: String, startDate: Date, endDate: Date, color: UIColor, allDay: Bool, imageURLString: String) {
         self.init(id: id, title: title, startDate: startDate, endDate: endDate, location: "", color: color, allDay: allDay, imageURLString: imageURLString)
     }
-
+    
     /**
      Convenience initializer.
      */
     public convenience override init() {
         self.init(id: -1, title: "New Event", startDate: Date(), endDate: Date().addingTimeInterval(TimeInterval(exactly: 10000)!), color: UIColor.blue, imageURLString: String())
     }
-
+    
     public func encode(with coder: NSCoder) {
         coder.encode(id, forKey: EventDataEncoderKey.id)
         coder.encode(title, forKey: EventDataEncoderKey.title)
@@ -122,30 +123,32 @@ open class EventData: NSObject, NSCoding {
         coder.encode(color, forKey: EventDataEncoderKey.color)
         coder.encode(allDay, forKey: EventDataEncoderKey.allDay)
         coder.encode(gradientLayer, forKey: EventDataEncoderKey.gradientLayer)
+        coder.encode(imageURLString, forKey: EventDataEncoderKey.imageURLString)
     }
-
+    
     public required convenience init?(coder: NSCoder) {
         if  let dId = coder.decodeObject(forKey: EventDataEncoderKey.id) as? String,
             let dTitle = coder.decodeObject(forKey: EventDataEncoderKey.title) as? String,
             let dStartDate = coder.decodeObject(forKey: EventDataEncoderKey.startDate) as? Date,
             let dEndDate = coder.decodeObject(forKey: EventDataEncoderKey.endDate) as? Date,
             let dLocation = coder.decodeObject(forKey: EventDataEncoderKey.location) as? String,
-            let dColor = coder.decodeObject(forKey: EventDataEncoderKey.color) as? UIColor {
-                let dGradientLayer = coder.decodeObject(forKey: EventDataEncoderKey.gradientLayer) as? CAGradientLayer
-                let dAllDay = coder.decodeBool(forKey: EventDataEncoderKey.allDay)
-                self.init(id: dId,
-                          title: dTitle,
-                          startDate: dStartDate,
-                          endDate: dEndDate,
-                          location: dLocation,
-                          color: dColor,
-                          allDay: dAllDay,
-                          gradientLayer: dGradientLayer)
+            let dColor = coder.decodeObject(forKey: EventDataEncoderKey.color) as? UIColor, let dImageUrlString = coder.decodeObject(forKey: EventDataEncoderKey.imageURLString) as? String {
+            let dGradientLayer = coder.decodeObject(forKey: EventDataEncoderKey.gradientLayer) as? CAGradientLayer
+            let dAllDay = coder.decodeBool(forKey: EventDataEncoderKey.allDay)
+            self.init(id: dId,
+                      title: dTitle,
+                      startDate: dStartDate,
+                      endDate: dEndDate,
+                      location: dLocation,
+                      color: dColor,
+                      allDay: dAllDay,
+                      gradientLayer: dGradientLayer,
+                      imageURLString: dImageUrlString)
         } else {
             return nil
         }
     }
-
+    
     // Static equal comparison operator
     public static func isEqual(lhs: EventData, rhs: EventData) -> Bool {
         return (lhs.id == rhs.id) &&
@@ -156,13 +159,13 @@ open class EventData: NSObject, NSCoding {
             (lhs.allDay == rhs.allDay) &&
             (lhs.color.isEqual(rhs.color))
     }
-
+    
     public override var hash: Int {
         var hasher = Hasher()
         hasher.combine(id)
         return hasher.finalize()
     }
-
+    
     /**
      Returns the string that will be displayed by this event. Overridable.
      */
@@ -182,9 +185,9 @@ open class EventData: NSObject, NSCoding {
             mainAttributedString.append(NSMutableAttributedString(string: " | \(self.location)", attributes: infoFontAttributes))
         }
         return mainAttributedString
-
+        
     }
-
+    
     // Configures the gradient based on the provided color and given endColor.
     public func configureGradient(_ endColor: UIColor) {
         let gradient = CAGradientLayer()
@@ -193,7 +196,7 @@ open class EventData: NSObject, NSCoding {
         gradient.endPoint = CGPoint(x: 1, y: 1)
         self.gradientLayer = gradient
     }
-
+    
     // Configures the gradient based on provided gradient. Only preserves colors, start and endpoint.
     public func configureGradient(_ gradient: CAGradientLayer?) {
         if let grad = gradient {
@@ -204,25 +207,25 @@ open class EventData: NSObject, NSCoding {
             self.gradientLayer = newGrad
         }
     }
-
+    
     public func remakeEventData(withStart start: Date, andEnd end: Date) -> EventData {
         let newEvent = EventData(id: self.id, title: self.title, startDate: start, endDate: end, location: self.location, color: self.color, allDay: self.allDay, imageURLString: self.imageURLString)
         newEvent.configureGradient(self.gradientLayer)
         return newEvent
     }
-
+    
     public func remakeEventData(withColor color: UIColor) -> EventData {
         let newEvent = EventData(id: self.id, title: self.title, startDate: self.startDate, endDate: self.endDate, location: self.location, color: color, allDay: self.allDay, imageURLString: self.imageURLString)
         newEvent.configureGradient(self.gradientLayer)
         return newEvent
     }
-
+    
     public func remakeEventDataAsAllDay(forDate date: Date) -> EventData {
         let newEvent = EventData(id: self.id, title: self.title, startDate: date.getStartOfDay(), endDate: date.getEndOfDay(), location: self.location, color: self.color, allDay: true, imageURLString: self.imageURLString)
         newEvent.configureGradient(self.gradientLayer)
         return newEvent
     }
-
+    
     /**
      In case this event spans multiple days this function will be called to split it into multiple events
      which can be assigned to individual dayViewCells.b
@@ -274,7 +277,7 @@ open class EventData: NSObject, NSCoding {
         }
         return splitEvents
     }
-
+    
     func getGradientLayer(withFrame frame: CGRect) -> CAGradientLayer? {
         guard let gradient = self.gradientLayer else {
             return nil
@@ -300,4 +303,5 @@ struct EventDataEncoderKey {
     static let color = "EVENT_DATA_COLOR"
     static let allDay = "EVENT_DATA_ALL_DAY"
     static let gradientLayer = "EVENT_DATA_GRADIENT_LAYER"
+    static let imageURLString = "EVENT_DATA_IMAGE_URL_STRING"
 }

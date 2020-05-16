@@ -258,7 +258,6 @@ UICollectionViewDelegate, UICollectionViewDataSource, DayViewCellDelegate, Frame
             dayViewCell.delegate = self
             dayViewCell.isInitLayerWithImage = isInitLayerWithImage
             dayViewCell.isUsingPlainEvent = isUsingPlainEvent
-            dayViewCell.eventStyleCallback = self.weekView?.eventStyleCallback
             dayViewCell.layout = self.dayViewCellLayout // NOTE: Pass by reference
             dayViewCells[dayViewCell.id] = dayViewCell
             let dayDateForCell = getDayDate(forIndexPath: indexPath)
