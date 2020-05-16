@@ -143,7 +143,6 @@
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
 				2BA5DBBCB7F4308CC573BF0E /* [CP] Embed Pods Frameworks */,
-				E738FDF4BC1FE789763FA8E3 /* [CP] Copy Pods Resources */,
 				9118F5301F2889890055371E /* ShellScript */,
 			);
 			buildRules = (
@@ -211,16 +210,18 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-QVRWeekView_Example/Pods-QVRWeekView_Example-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-QVRWeekView_Example/Pods-QVRWeekView_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/QVRWeekView/QVRWeekView.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QVRWeekView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QVRWeekView_Example/Pods-QVRWeekView_Example-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-QVRWeekView_Example/Pods-QVRWeekView_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		74262615F78BE2D54D893336 /* [CP] Check Pods Manifest.lock */ = {
@@ -253,21 +254,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint lint --path \"$SRCROOT\"/..\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
-		};
-		E738FDF4BC1FE789763FA8E3 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QVRWeekView_Example/Pods-QVRWeekView_Example-resources.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 

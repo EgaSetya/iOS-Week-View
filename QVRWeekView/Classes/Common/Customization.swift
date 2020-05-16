@@ -89,6 +89,28 @@ public extension WeekView {
     }
 
     /**
+     Background color of top bar containing day labels.
+     */
+    @objc var topBarColor: UIColor {
+        get {
+            return self.topBarView.backgroundColor!
+        }
+        set(color) {
+            if self.roundBottom{
+                self.topBarView.backgroundColor = .clear
+                self.topLeftBufferView.backgroundColor = .clear
+                self.backgroundTopBarView.backgroundColor = color
+                self.topBarHourView.backgroundColor = color
+            }else{
+                self.topBarView.backgroundColor = color
+                self.topLeftBufferView.backgroundColor = color
+                self.backgroundTopBarView.backgroundColor = .clear
+                self.topBarHourView.backgroundColor = .clear
+            }
+        }
+    }
+
+    /**
      Number of visible days when in portait mode.
      */
     @objc var visibleDaysInPortraitMode: Int {

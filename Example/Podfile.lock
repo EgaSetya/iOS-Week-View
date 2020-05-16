@@ -1,16 +1,25 @@
 PODS:
-  - QVRWeekView (0.11.4)
+  - QVRWeekView (0.14.0):
+    - SDWebImage
+  - SDWebImage (5.7.3):
+    - SDWebImage/Core (= 5.7.3)
+  - SDWebImage/Core (5.7.3)
 
 DEPENDENCIES:
   - QVRWeekView (from `../`)
 
+SPEC REPOS:
+  trunk:
+    - SDWebImage
+
 EXTERNAL SOURCES:
   QVRWeekView:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
-  QVRWeekView: 51b07404b48b7055f5903f0e0d0c1d169bb58975
+  QVRWeekView: 526fcae36579196e03caccd1a7304751eea35948
+  SDWebImage: 97351f6582ceca541ea294ba66a1fcb342a331c2
 
 PODFILE CHECKSUM: 1492560f1a1cf4e64db1ea851f67e12ec4c910b0
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.9.1

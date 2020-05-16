@@ -39,12 +39,7 @@ open class EventData: NSObject, NSCoding {
     /**
      Main initializer. All properties.
      */
-<<<<<<< HEAD
-    public init(id: String, title: String, startDate: Date, endDate: Date, location: String, color: UIColor, allDay: Bool, imageURLString: String) {
-        self.imageURLString = imageURLString
-=======
-    public init(id: String, title: String, startDate: Date, endDate: Date, location: String, color: UIColor, allDay: Bool, gradientLayer: CAGradientLayer? = nil) {
->>>>>>> master
+    public init(id: String, title: String, startDate: Date, endDate: Date, location: String, color: UIColor, allDay: Bool, gradientLayer: CAGradientLayer? = nil, imageURLString: String) {
         self.id = id
         self.title = title
         self.location = location
@@ -114,13 +109,8 @@ open class EventData: NSObject, NSCoding {
     /**
      Convenience initializer.
      */
-<<<<<<< HEAD
     public convenience init() {
         self.init(id: -1, title: "New Event", startDate: Date(), endDate: Date().addingTimeInterval(TimeInterval(exactly: 10000)!), color: UIColor.blue, imageURLString: String())
-=======
-    override public convenience init() {
-        self.init(id: -1, title: "New Event", startDate: Date(), endDate: Date().addingTimeInterval(TimeInterval(exactly: 10000)!), color: UIColor.blue)
->>>>>>> master
     }
 
     public func encode(with coder: NSCoder) {

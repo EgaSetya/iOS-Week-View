@@ -10,16 +10,19 @@ import SDWebImage
 
 class EventLayer: CALayer {
     
-    
     override init(layer: Any) {
         super.init(layer: layer)
     }
-
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     init(withFrame frame: CGRect, layout: DayViewCellLayout, andEvent event: EventData, withImage: Bool = false, isPlain: Bool = false) {
         super.init()
         self.bounds = frame
         self.frame = frame
-
+        
         // Configure gradient and colour layer
         if let gradient = event.getGradientLayer(withFrame: frame) {
             self.backgroundColor = UIColor.clear.cgColor
@@ -44,37 +47,29 @@ class EventLayer: CALayer {
                                           height: imageWidthHeight)
                 
                 let urlString = URL(string: event.imageURLString)
-                SDWebImageManager.shared()?.imageDownloader.downloadImage(with: urlString, options: .continueInBackground, progress: nil, completed: { (image, _, _, _) in
+                SDWebImageManager.shared?.imageDownloader.downloadImage(with: urlString, options: .continueInBackground, progress: nil, completed: { (image, _, _, _) in
                     
                     imageLayer.contents = image?.cgImage
                 })
                 
                 self.addSublayer(imageLayer)
             }else{
-                // Configure event layer with text
+                // Configure event text layer
                 let eventTextLayer = CATextLayer()
                 eventTextLayer.isWrapped = true
                 eventTextLayer.contentsScale = UIScreen.main.scale
-                eventTextLayer.string = event.getDisplayString()
-
-        // Configure event text layer
-        let eventTextLayer = CATextLayer()
-        eventTextLayer.isWrapped = true
-        eventTextLayer.contentsScale = UIScreen.main.scale
-        eventTextLayer.string = event.getDisplayString(withMainFont: layout.eventLabelFont,
-                                                       infoFont: layout.eventLabelInfoFont,
-                                                       andColor: layout.eventLabelTextColor)
-
-        let xPadding = layout.eventLabelHorizontalTextPadding
-        let yPadding = layout.eventLabelVerticalTextPadding
-        eventTextLayer.frame = CGRect(x: frame.origin.x + xPadding,
-                                      y: frame.origin.y + yPadding,
-                                      width: frame.width - 2*xPadding,
-                                      height: frame.height - 2*yPadding)
-        self.addSublayer(eventTextLayer)
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+                eventTextLayer.string = event.getDisplayString(withMainFont: layout.eventLabelFont,
+                                                               infoFont: layout.eventLabelInfoFont,
+                                                               andColor: layout.eventLabelTextColor)
+                
+                let xPadding = layout.eventLabelHorizontalTextPadding
+                let yPadding = layout.eventLabelVerticalTextPadding
+                eventTextLayer.frame = CGRect(x: frame.origin.x + xPadding,
+                                              y: frame.origin.y + yPadding,
+                                              width: frame.width - 2*xPadding,
+                                              height: frame.height - 2*yPadding)
+                self.addSublayer(eventTextLayer)
+            }
+        }
     }
 }
