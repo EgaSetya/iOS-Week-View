@@ -89,289 +89,14 @@ public extension WeekView {
     }
 
     /**
-     Background color of top bar containing day labels.
-     */
-    @objc var topBarColor: UIColor {
-        get {
-            return self.topBarView.backgroundColor!
-        }
-        set(color) {
-            if self.roundBottom{
-                self.topBarView.backgroundColor = .clear
-                self.topLeftBufferView.backgroundColor = .clear
-                self.backgroundTopBarView.backgroundColor = color
-                self.topBarHourView.backgroundColor = color
-            }else{
-                self.topBarView.backgroundColor = color
-                self.topLeftBufferView.backgroundColor = color
-                self.backgroundTopBarView.backgroundColor = .clear
-                self.topBarHourView.backgroundColor = .clear
-            }
-        }
-    }
-
-    /**
-     Color of the side bar containing hour labels.
-     */
-    @objc var sideBarColor: UIColor {
-        get {
-            return self.sideBarView.backgroundColor!
-        }
-        set(color) {
-            self.sideBarView.backgroundColor = color
-        }
-    }
-
-    /**
-     Width of the side bar containing hour labels.
-     */
-    @objc var sideBarWidth: CGFloat {
-        get {
-            return self.sideBarView.frame.width
-        }
-        set(width) {
-            self.sideBarWidthConstraint.constant = width
-            self.topLeftBufferWidthConstraint.constant = width
-        }
-    }
-
-    /**
-     Font for all day labels contained in the top bar.
-     */
-    @objc var dayLabelDefaultFont: UIFont {
-        get {
-            return TextVariables.dayLabelDefaultFont
-        }
-        set(font) {
-            TextVariables.dayLabelDefaultFont = font
-            updateVisibleLabelsAndMainConstraints()
-        }
-    }
-
-    /**
-     Text color for all day labels contained in the top bar.
-     */
-    @objc var dayLabelTextColor: UIColor {
-        get {
-            return TextVariables.dayLabelTextColor
-        }
-        set(color) {
-            TextVariables.dayLabelTextColor = color
-            updateVisibleLabelsAndMainConstraints()
-        }
-    }
-
-    /**
-     Text color for today day label contained in the top bar.
-     */
-    @objc var dayLabelTodayTextColor: UIColor {
-        get {
-            return TextVariables.dayLabelTodayTextColor
-        }
-        set(color) {
-            TextVariables.dayLabelTodayTextColor = color
-            updateVisibleLabelsAndMainConstraints()
-        }
-    }
-
-    /**
-     Minimum font size that day label text will be resized to if label is too small.
-     */
-    @objc var dayLabelMinimumFontSize: CGFloat {
-        get {
-            return TextVariables.dayLabelMinimumFontSize
-        }
-        set(scale) {
-            TextVariables.dayLabelMinimumFontSize = scale
-            updateVisibleLabelsAndMainConstraints()
-        }
-    }
-
-    /**
-     Short date format for day labels.
-     See reference of date formats at: http://nsdateformatter.com/
-     */
-    @objc var dayLabelShortDateFormat: String {
-        get {
-            return TextVariables.dayLabelDateFormats[.small]!
-        }
-        set(format) {
-            TextVariables.dayLabelDateFormats[.small] = format
-            updateVisibleLabelsAndMainConstraints()
-        }
-    }
-
-    /**
-     Normal date format for day labels.
-     See reference of date formats at: http://nsdateformatter.com/
-     */
-    @objc var dayLabelNormalDateFormat: String {
-        get {
-            return TextVariables.dayLabelDateFormats[.normal]!
-        }
-        set(format) {
-            TextVariables.dayLabelDateFormats[.normal] = format
-            updateVisibleLabelsAndMainConstraints()
-        }
-    }
-
-    /**
-     Long date format for day labels.
-     See reference of date formats at: http://nsdateformatter.com/
-     */
-    @objc var dayLabelLongDateFormat: String {
-        get {
-            return TextVariables.dayLabelDateFormats[.large]!
-        }
-        set(format) {
-            TextVariables.dayLabelDateFormats[.large] = format
-            updateVisibleLabelsAndMainConstraints()
-        }
-    }
-
-    /**
-     Locale for the day labels.
-     If none is given device locale will be used.
-     */
-    @objc var dayLabelDateLocaleIdentifier: String {
-        get {
-            if let locale = TextVariables.dayLabelDateLocale {
-                return locale.languageCode!
-            } else {
-                return NSLocale.current.languageCode!
-            }
-        }
-        set(id) {
-            TextVariables.dayLabelDateLocale = Locale(identifier: id)
-            updateVisibleLabelsAndMainConstraints()
-        }
-    }
-
-    /**
-     Font for all hour labels contained in the side bar.
-     */
-    @objc var hourLabelFont: UIFont {
-        get {
-            return TextVariables.hourLabelFont
-        }
-        set(font) {
-            TextVariables.hourLabelFont = font
-            updateHourSideBarView()
-        }
-    }
-
-    /**
-     Text color for all hour labels contained in the side bar.
-     */
-    @objc var hourLabelTextColor: UIColor {
-        get {
-            return TextVariables.hourLabelTextColor
-        }
-        set(color) {
-            TextVariables.hourLabelTextColor = color
-            updateHourSideBarView()
-        }
-    }
-
-    /**
-     Minimum percentage that hour label text will be resized to if label is too small.
-     */
-    @objc var hourLabelMinimumFontSize: CGFloat {
-        get {
-            return TextVariables.hourLabelMinimumFontSize
-        }
-        set(scale) {
-            TextVariables.hourLabelMinimumFontSize = scale
-            updateHourSideBarView()
-        }
-    }
-
-    /**
-     Format of all hour labels.
-     */
-    @objc var hourLabelDateFormat: String {
-        get {
-            return TextVariables.hourLabelDateFormat
-        }
-        set(format) {
-            TextVariables.hourLabelDateFormat = format
-            updateHourSideBarView()
-        }
-    }
-
-    /**
-     Height of all day labels.
-     */
-    @objc var allDayEventHeight: CGFloat {
-        get {
-            return LayoutVariables.allDayEventHeight
-        }
-        set(height) {
-            self.dayScrollView.setAllDayEventHeight(to: height)
-        }
-    }
-
-    /**
-     Height of all day labels.
-     */
-    @objc var allDayEventVerticalSpacing: CGFloat {
-        get {
-            return LayoutVariables.allDayEventVerticalSpacing
-        }
-        set(height) {
-            dayScrollView.setAllDayEventVerticalSpacing(to: height)
-        }
-    }
-
-    /**
-     Spread all day events on x axis, if not true than spread will be made on y axis.
-     */
-    @objc var allDayEventsSpreadOnX: Bool {
-        get {
-            return LayoutVariables.allDayEventsSpreadOnX
-        }
-        set(onX) {
-            self.dayScrollView.setAllDayEventsSpreadOnX(to: onX)
-        }
-    }
-
-    /**
-     Enable this to automatically allow events to be converted to allDay events if they go from midnight to midnight. (default true)
-     */
-    @objc var autoConvertAllDayEvents: Bool {
-        get {
-            return LayoutVariables.autoConvertAllDayEvents
-        }
-        set(enable) {
-            LayoutVariables.autoConvertAllDayEvents = enable
-        }
-    }
-
-    /**
-     Helper function for hour label customization.
-     */
-    @objc private func updateHourSideBarView() {
-        for view in self.sideBarView.subviews {
-            if let hourSideBarView = view as? HourSideBarView {
-                hourSideBarView.layoutIfNeeded()
-                hourSideBarView.updateLabels()
-            }
-        }
-    }
-
-    // MARK: - DAYSCROLLVIEW CUSTOMIZATION -
-
-    /**
      Number of visible days when in portait mode.
      */
     @objc var visibleDaysInPortraitMode: Int {
         get {
-            return Int(LayoutVariables.portraitVisibleDays)
+            return Int(self.dayScrollView.visibleDaysInPortraitMode)
         }
         set(days) {
-            if self.dayScrollView.setVisiblePortraitDays(to: CGFloat(days)) {
-                updateVisibleLabelsAndMainConstraints()
-            }
+            self.dayScrollView.visibleDaysInPortraitMode = CGFloat(days)
         }
     }
 
@@ -380,12 +105,58 @@ public extension WeekView {
      */
     @objc var visibleDaysInLandscapeMode: Int {
         get {
-            return Int(LayoutVariables.landscapeVisibleDays)
+            return Int(self.dayScrollView.visibleDaysInLandscapeMode)
         }
         set(days) {
-            if self.dayScrollView.setVisibleLandscapeDays(to: CGFloat(days)) {
-                updateVisibleLabelsAndMainConstraints()
-            }
+            self.dayScrollView.visibleDaysInLandscapeMode = CGFloat(days)
+        }
+    }
+
+    /**
+     Amount of spacing in between day view cells when in portrait mode.
+     */
+    @objc var portraitDayViewSideSpacing: CGFloat {
+        get {
+            return self.dayScrollView.portraitDayViewHorizontalSpacing
+        }
+        set(width) {
+            self.dayScrollView.portraitDayViewHorizontalSpacing = width
+        }
+    }
+
+    /**
+     Amount of spacing in between day view cells when in landscape mode.
+     */
+    @objc var landscapeDayViewSideSpacing: CGFloat {
+        get {
+            return self.dayScrollView.landscapeDayViewHorizontalSpacing
+        }
+        set(width) {
+            self.dayScrollView.landscapeDayViewHorizontalSpacing = width
+        }
+    }
+
+    /**
+     Amount of spacing above and below day view cells when in portrait mode.
+     */
+    @objc var portraitDayViewVerticalSpacing: CGFloat {
+        get {
+            return self.dayScrollView.portraitDayViewVerticalSpacing
+        }
+        set(height) {
+            self.dayScrollView.portraitDayViewVerticalSpacing = height
+        }
+    }
+
+    /**
+     Amount of spacing above and below day view cells when in landscape mode.
+     */
+    @objc var landscapeDayViewVerticalSpacing: CGFloat {
+        get {
+            return self.dayScrollView.landscapeDayViewVerticalSpacing
+        }
+        set(height) {
+            self.dayScrollView.landscapeDayViewVerticalSpacing = height
         }
     }
 
@@ -394,10 +165,10 @@ public extension WeekView {
      */
     @objc var eventLabelFont: UIFont {
         get {
-            return TextVariables.eventLabelFont
+            return self.dayScrollView.dayViewCellLayout.eventLabelFont
         }
         set(font) {
-            self.dayScrollView.setEventLabelFont(to: font)
+            self.dayScrollView.dayViewCellLayout.eventLabelFont = font
         }
     }
 
@@ -406,10 +177,10 @@ public extension WeekView {
      */
     @objc var eventLabelInfoFont: UIFont {
         get {
-            return TextVariables.eventLabelInfoFont
+            return self.dayScrollView.dayViewCellLayout.eventLabelInfoFont
         }
         set(font) {
-            self.dayScrollView.setEventLabelInfoFont(to: font)
+            self.dayScrollView.dayViewCellLayout.eventLabelInfoFont = font
         }
     }
 
@@ -418,47 +189,34 @@ public extension WeekView {
      */
     @objc var eventLabelTextColor: UIColor {
         get {
-            return TextVariables.eventLabelTextColor
+            return self.dayScrollView.dayViewCellLayout.eventLabelTextColor
         }
         set(color) {
-            self.dayScrollView.setEventLabelTextColor(to: color)
+            self.dayScrollView.dayViewCellLayout.eventLabelTextColor = color
         }
     }
 
     /**
      Minimum percentage that event label text will be resized to if label is too small.
      */
-    @objc var eventLabelMinimumFontSize: CGFloat {
-        get {
-            return TextVariables.eventLabelMinimumFontSize
-        }
-        set(scale) {
-            self.dayScrollView.setEventLabelMinimumFontSize(to: scale)
-        }
-    }
+    @available(*, deprecated, message: "This functionality has been removed") // swiftlint:disable unused_setter_value
+    @objc var eventLabelMinimumFontSize: CGFloat { get { CGFloat(0) } set(size) { () } }
 
     /**
      Sets whether event label font resizing is enabled or not.
      */
     @available(*, deprecated, message: "This functionality has been removed")
-    @objc var eventLabelFontResizingEnabled: Bool {
-        get {
-            return TextVariables.eventLabelFontResizingEnabled
-        }
-        set(bool) {
-            self.dayScrollView.setEventLabelFontResizingEnabled(to: bool)
-        }
-    }
+    @objc var eventLabelFontResizingEnabled: Bool { get { false } set(enabled) { () } } // swiftlint:enable unused_setter_value
 
     /**
      Horizontal padding of the text within event labels.
      */
     @objc var eventLabelHorizontalTextPadding: CGFloat {
         get {
-            return TextVariables.eventLabelHorizontalTextPadding
+            return self.dayScrollView.dayViewCellLayout.eventLabelHorizontalTextPadding
         }
         set(padding) {
-            self.dayScrollView.setEventLabelHorizontalTextPadding(to: padding)
+            self.dayScrollView.dayViewCellLayout.eventLabelHorizontalTextPadding = padding
         }
     }
 
@@ -467,10 +225,10 @@ public extension WeekView {
      */
     @objc var eventLabelVerticalTextPadding: CGFloat {
         get {
-            return TextVariables.eventLabelVerticalTextPadding
+            return self.dayScrollView.dayViewCellLayout.eventLabelVerticalTextPadding
         }
         set(padding) {
-            self.dayScrollView.setEventLabelVerticalTextPadding(to: padding)
+            self.dayScrollView.dayViewCellLayout.eventLabelVerticalTextPadding = padding
         }
     }
 
@@ -479,10 +237,10 @@ public extension WeekView {
      */
     @objc var previewEventText: String {
         get {
-            return LayoutVariables.previewEventText
+            return self.dayScrollView.dayViewCellLayout.previewEventText
         }
         set(text) {
-            self.dayScrollView.setPreviewEventText(to: text)
+            self.dayScrollView.dayViewCellLayout.previewEventText = text
         }
     }
 
@@ -491,10 +249,10 @@ public extension WeekView {
      */
     @objc var previewEventColor: UIColor {
         get {
-            return LayoutVariables.previewEventColor
+            return self.dayScrollView.dayViewCellLayout.previewEventColor
         }
         set(color) {
-            self.dayScrollView.setPreviewEventColor(to: color)
+            self.dayScrollView.dayViewCellLayout.previewEventColor = color
         }
     }
 
@@ -503,10 +261,10 @@ public extension WeekView {
      */
     @objc var previewEventHeightInHours: Double {
         get {
-            return LayoutVariables.previewEventHeightInHours
+            return self.dayScrollView.dayViewCellLayout.previewEventHourHeight
         }
         set(height) {
-            self.dayScrollView.setPreviewEventHeightInHours(to: height)
+            self.dayScrollView.dayViewCellLayout.previewEventHourHeight = height
         }
     }
 
@@ -515,10 +273,10 @@ public extension WeekView {
      */
     @objc var previewEventPrecisionInMinutes: Double {
         get {
-            return LayoutVariables.previewEventPrecisionInMinutes
+            return self.dayScrollView.dayViewCellLayout.previewEventMinutePrecision
         }
         set(mins) {
-            self.dayScrollView.setPreviewEventPrecisionInMinutes(to: mins)
+            self.dayScrollView.dayViewCellLayout.previewEventMinutePrecision = mins
         }
     }
 
@@ -527,10 +285,10 @@ public extension WeekView {
      */
     @objc var showPreviewOnLongPress: Bool {
         get {
-            return LayoutVariables.showPreviewOnLongPress
+            return self.dayScrollView.dayViewCellLayout.showPreview
         }
         set(show) {
-            self.dayScrollView.setShowPreviewOnLongPress(to: show)
+            self.dayScrollView.dayViewCellLayout.showPreview = show
         }
     }
 
@@ -539,13 +297,10 @@ public extension WeekView {
      */
     @objc var defaultDayViewColor: UIColor {
         get {
-            return LayoutVariables.defaultDayViewColor
+            return self.dayScrollView.dayViewCellLayout.defaultDayViewColor
         }
         set(color) {
-            if self.todayViewColor == self.defaultDayViewColor {
-                self.dayScrollView.setTodayViewColor(to: color)
-            }
-            self.dayScrollView.setDefaultDayViewColor(to: color)
+            self.dayScrollView.dayViewCellLayout.defaultDayViewColor = color
         }
     }
 
@@ -554,10 +309,10 @@ public extension WeekView {
      */
     @objc var weekendDayViewColor: UIColor {
         get {
-            return LayoutVariables.weekendDayViewColor
+            return self.dayScrollView.dayViewCellLayout.weekendDayViewColor
         }
         set(color) {
-            self.dayScrollView.setWeekendDayViewColor(to: color)
+            self.dayScrollView.dayViewCellLayout.weekendDayViewColor = color
         }
     }
 
@@ -566,10 +321,10 @@ public extension WeekView {
      */
     @objc var passedDayViewColor: UIColor {
         get {
-            return LayoutVariables.passedDayViewColor
+            return self.dayScrollView.dayViewCellLayout.passedDayViewColor
         }
         set(color) {
-            self.dayScrollView.setPassedDayViewColor(to: color)
+            self.dayScrollView.dayViewCellLayout.passedDayViewColor = color
         }
     }
 
@@ -578,10 +333,10 @@ public extension WeekView {
      */
     @objc var passedWeekendDayViewColor: UIColor {
         get {
-            return LayoutVariables.passedWeekendDayViewColor
+            return self.dayScrollView.dayViewCellLayout.passedWeekendDayViewColor
         }
         set(color) {
-            self.dayScrollView.setPassedWeekendDayViewColor(to: color)
+            self.dayScrollView.dayViewCellLayout.passedWeekendDayViewColor = color
         }
     }
 
@@ -590,10 +345,34 @@ public extension WeekView {
      */
     @objc var todayViewColor: UIColor {
         get {
-            return LayoutVariables.todayViewColor
+            return self.dayScrollView.dayViewCellLayout.todayViewColor
         }
         set(color) {
-            self.dayScrollView.setTodayViewColor(to: color)
+            self.dayScrollView.dayViewCellLayout.todayViewColor = color
+        }
+    }
+
+    /**
+     Whether or not to show the time overlay on the today day view cell. Default true.
+     */
+    @objc var showTodayTimeOverlay: Bool {
+        get {
+            return self.dayScrollView.dayViewCellLayout.showTimeOverlay
+        }
+        set(show) {
+            self.dayScrollView.dayViewCellLayout.showTimeOverlay = show
+        }
+    }
+
+    /**
+     Height for the day view cells. This is the initial height for zoom scale = 1.0.
+     */
+    @objc var dayViewCellInitialHeight: CGFloat {
+        get {
+            return self.dayScrollView.initialDayViewCellHeight
+        }
+        set(height) {
+            self.dayScrollView.initialDayViewCellHeight = height
         }
     }
 
@@ -602,10 +381,10 @@ public extension WeekView {
      */
     @objc var dayViewHourIndicatorColor: UIColor {
         get {
-            return LayoutVariables.hourIndicatorColor
+            return self.dayScrollView.dayViewCellLayout.hourIndicatorColor
         }
         set(color) {
-            self.dayScrollView.setDayViewHourIndicatorColor(to: color)
+            self.dayScrollView.dayViewCellLayout.hourIndicatorColor = color
         }
     }
 
@@ -614,10 +393,10 @@ public extension WeekView {
      */
     @objc var dayViewHourIndicatorThickness: CGFloat {
         get {
-            return LayoutVariables.hourIndicatorThickness
+            return self.dayScrollView.dayViewCellLayout.hourIndicatorThickness
         }
         set(thickness) {
-            self.dayScrollView.setDayViewHourIndicatorThickness(to: thickness)
+            self.dayScrollView.dayViewCellLayout.hourIndicatorThickness = thickness
         }
     }
 
@@ -626,10 +405,10 @@ public extension WeekView {
      */
     @objc var dayViewMainSeparatorColor: UIColor {
         get {
-            return LayoutVariables.mainSeparatorColor
+            return self.dayScrollView.dayViewCellLayout.mainSeparatorColor
         }
         set(color) {
-            self.dayScrollView.setDayViewMainSeparatorColor(to: color)
+            self.dayScrollView.dayViewCellLayout.mainSeparatorColor = color
         }
     }
 
@@ -638,10 +417,10 @@ public extension WeekView {
      */
     @objc var dayViewMainSeparatorThickness: CGFloat {
         get {
-            return LayoutVariables.mainSeparatorThickness
+            return self.dayScrollView.dayViewCellLayout.mainSeparatorThickness
         }
         set(thickness) {
-            self.dayScrollView.setDayViewMainSeparatorThickness(to: thickness)
+            self.dayScrollView.dayViewCellLayout.mainSeparatorThickness = thickness
         }
     }
 
@@ -650,10 +429,10 @@ public extension WeekView {
      */
     @objc var dayViewDashedSeparatorColor: UIColor {
         get {
-            return LayoutVariables.dashedSeparatorColor
+            return self.dayScrollView.dayViewCellLayout.dashedSeparatorColor
         }
         set(color) {
-            self.dayScrollView.setDayViewDashedSeparatorColor(to: color)
+            self.dayScrollView.dayViewCellLayout.dashedSeparatorColor = color
         }
     }
 
@@ -662,10 +441,10 @@ public extension WeekView {
      */
     @objc var dayViewDashedSeparatorThickness: CGFloat {
         get {
-            return LayoutVariables.dashedSeparatorThickness
+            return self.dayScrollView.dayViewCellLayout.dashedSeparatorThickness
         }
         set(thickness) {
-            self.dayScrollView.setDayViewDashedSeparatorThickness(to: thickness)
+            self.dayScrollView.dayViewCellLayout.dashedSeparatorThickness = thickness
         }
     }
 
@@ -680,78 +459,10 @@ public extension WeekView {
      */
     @objc var dayViewDashedSeparatorPattern: [NSNumber] {
         get {
-            return LayoutVariables.dashedSeparatorPattern
+            return self.dayScrollView.dayViewCellLayout.dashedSeparatorPattern
         }
         set(pattern) {
-            self.dayScrollView.setDayViewDashedSeparatorPattern(to: pattern)
-        }
-    }
-
-    /**
-     Height for the day view cells. This is the initial height for zoom scale = 1.0.
-     */
-    @objc var dayViewCellHeight: CGFloat {
-        get {
-            return LayoutVariables.dayViewCellHeight
-        }
-        set(height) {
-            self.dayScrollView.setInitialVisibleDayViewCellHeight(to: height)
-        }
-    }
-
-    /**
-     Amount of spacing in between day view cells when in portrait mode.
-     */
-    @objc var portraitDayViewSideSpacing: CGFloat {
-        get {
-            return LayoutVariables.portraitDayViewHorizontalSpacing
-        }
-        set(width) {
-            if self.dayScrollView.setPortraitDayViewHorizontalSpacing(to: width) {
-                updateVisibleLabelsAndMainConstraints()
-            }
-        }
-    }
-
-    /**
-     Amount of spacing in between day view cells when in landscape mode.
-     */
-    @objc var landscapeDayViewSideSpacing: CGFloat {
-        get {
-            return LayoutVariables.landscapeDayViewHorizontalSpacing
-        }
-        set(width) {
-            if self.dayScrollView.setLandscapeDayViewHorizontalSpacing(to: width) {
-                updateVisibleLabelsAndMainConstraints()
-            }
-        }
-    }
-
-    /**
-     Amount of spacing above and below day view cells when in portrait mode.
-     */
-    @objc var portraitDayViewVerticalSpacing: CGFloat {
-        get {
-            return LayoutVariables.portraitDayViewVerticalSpacing
-        }
-        set(height) {
-            if self.dayScrollView.setPortraitDayViewVerticalSpacing(to: height) {
-                updateVisibleLabelsAndMainConstraints()
-            }
-        }
-    }
-
-    /**
-     Amount of spacing above and below day view cells when in landscape mode.
-     */
-    @objc var landscapeDayViewVerticalSpacing: CGFloat {
-        get {
-            return LayoutVariables.landscapeDayViewVerticalSpacing
-        }
-        set(height) {
-            if self.dayScrollView.setLandscapeDayViewVerticalSpacing(to: height) {
-                updateVisibleLabelsAndMainConstraints()
-            }
+            self.dayScrollView.dayViewCellLayout.dashedSeparatorPattern = pattern
         }
     }
 
@@ -761,45 +472,10 @@ public extension WeekView {
      */
     @objc var minimumZoomScale: CGFloat {
         get {
-            return LayoutVariables.minimumZoomScale
+            return self.dayScrollView.zoomScaleMin
         }
         set(scale) {
-            self.dayScrollView.setMinimumZoomScale(to: scale)
-        }
-    }
-
-    /**
-     The current zoom scale to which the weekview will be zoomed. Ex. 0.5 means that the weekview
-     will be zoomed to half the original given hourHeight.
-     */
-    @objc var currentZoomScale: CGFloat {
-        get {
-            return LayoutVariables.zoomScale
-        }
-        set(scale) {
-            guard currentZoomScale != scale else {
-                return
-            }
-            switch self.zoomOffsetPreservation {
-            case .center:
-                let offset = self.dayScrollView.centerOffset
-                self.dayScrollView.setCurrentZoomScale(to: scale)
-                self.dayScrollView.centerOffset = offset
-            case .top:
-                let offset = self.dayScrollView.topOffset
-                self.dayScrollView.setCurrentZoomScale(to: scale)
-                self.dayScrollView.topOffset = offset
-            case .bottom:
-                let offset = self.dayScrollView.bottomOffset
-                self.dayScrollView.setCurrentZoomScale(to: scale)
-                self.dayScrollView.bottomOffset = offset
-            case .reset:
-                self.dayScrollView.setCurrentZoomScale(to: scale)
-                self.dayScrollView.showNow()
-            default:
-                self.dayScrollView.setCurrentZoomScale(to: scale)
-            }
-
+            self.dayScrollView.zoomScaleMin = scale
         }
     }
 
@@ -809,10 +485,51 @@ public extension WeekView {
      */
     @objc var maximumZoomScale: CGFloat {
         get {
-            return LayoutVariables.minimumZoomScale
+            return self.dayScrollView.zoomScaleMax
         }
         set(scale) {
-            self.dayScrollView.setMaximumZoomScale(to: scale)
+            self.dayScrollView.zoomScaleMax = scale
+        }
+    }
+
+    /**
+     The current zoom scale to which the weekview will be zoomed. Ex. 0.5 means that the weekview
+     will be zoomed to half the original given hourHeight.
+     */
+    @objc var currentZoomScale: CGFloat {
+        get {
+            return self.dayScrollView.zoomScaleCurrent
+        }
+        set(scale) {
+            guard currentZoomScale != scale else {
+                return
+            }
+            self.dayScrollView.zoomScaleCurrent = scale
+            switch self.zoomOffsetPreservation {
+            case .center:
+                self.dayScrollView.centerOffset = self.dayScrollView.centerOffset
+            case .top:
+                self.dayScrollView.topOffset = self.dayScrollView.topOffset
+            case .bottom:
+                self.dayScrollView.bottomOffset = self.dayScrollView.bottomOffset
+            case .reset:
+                self.dayScrollView.showNow()
+            case .none:
+                ()
+            }
+
+        }
+    }
+
+    /**
+     A callback whose return will determine the style of the event layer
+     */
+    var eventStyleCallback: EventStlyeCallback? {
+        get {
+            self.dayScrollView.dayViewCellLayout.eventStyleCallback
+        }
+        set (callback) {
+            self.dayScrollView.dayViewCellLayout.eventStyleCallback = callback
         }
     }
 
@@ -822,65 +539,24 @@ public extension WeekView {
      */
     @objc var velocityOffsetMultiplier: CGFloat {
         get {
-            return LayoutVariables.velocityOffsetMultiplier
+            return self.dayScrollView.velocityOffsetMultiplier
         }
         set(multiplier) {
-            self.dayScrollView.setVelocityOffsetMultiplier(to: multiplier)
+            self.dayScrollView.velocityOffsetMultiplier = multiplier
         }
     }
-}
 
-// Customization extension for FontVariables.
-extension TextVariables {
-    // Default font for all day labels
-    fileprivate(set) static var dayLabelDefaultFont = LayoutDefaults.dayLabelFont {
-        didSet {
-            updateDayLabelCurrentFont()
+    /**
+     Determines behaviour of horizontal scrolling.
+     .infinite: infinite scrolling
+     .finite(number, startDate): finite scrolling for a number of days from given startDate
+     */
+    var horizontalScrolling: HorizontalScrolling {
+        get {
+            return self.dayScrollView.horizontalScrolling
+        }
+        set(option) {
+            self.dayScrollView.horizontalScrolling = option
         }
     }
-    // Text color for all day labels
-    fileprivate(set) static var dayLabelTextColor = LayoutDefaults.dayLabelTextColor
-    // Text color for today day labels
-    fileprivate(set) static var dayLabelTodayTextColor = LayoutDefaults.dayLabelTodayTextColor
-    // Minimum font for all day labels
-    fileprivate(set) static var dayLabelMinimumFontSize = LayoutDefaults.dayLabelMinimumFontSize
-    // Date formats for day labels
-    fileprivate(set) static var dayLabelDateFormats: [TextMode: String] = LayoutDefaults.dayLabelDateFormats
-    // Locale of day labels
-    fileprivate(set) static var dayLabelDateLocale: Locale?
-
-    // Font for all hour labels
-    fileprivate(set) static var hourLabelFont = LayoutDefaults.hourLabelFont {
-        didSet {
-            updateHourMinScale()
-        }
-    }
-    // Text color for all hour labels
-    fileprivate(set) static var hourLabelTextColor = LayoutDefaults.hourLabelTextColor
-    // Minimum font size for all hour labels
-    fileprivate(set) static var hourLabelMinimumFontSize = LayoutDefaults.hourLabelMinimumFontSize {
-        didSet {
-            updateHourMinScale()
-        }
-    }
-    // Minimum scale for all hour labels
-    private(set) static var hourLabelMinimumScale = LayoutDefaults.hourLabelMinimumFontSize / LayoutDefaults.hourLabelFont.pointSize
-    // Default format for all hour labels
-    fileprivate(set) static var hourLabelDateFormat = LayoutDefaults.hourLabelDateFormat
-
-    // Method updates the minimum hour scale
-    private static func updateHourMinScale () {
-        hourLabelMinimumScale = hourLabelMinimumFontSize / hourLabelFont.pointSize
-    }
-}
-
-// Customization extension for LayoutVariables
-extension LayoutVariables {
-
-    // Default height of the top bar
-    fileprivate(set) static var defaultTopBarHeight = LayoutDefaults.defaultTopBarHeight
-
-    // Automatically
-    fileprivate(set) static var autoConvertAllDayEvents = true
-
 }
