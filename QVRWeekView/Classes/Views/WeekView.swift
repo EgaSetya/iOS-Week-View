@@ -56,7 +56,7 @@ open class WeekView: UIView {
     
     //Reloads the events from the delegate
     public func notifyDataSetChanged() {
-        delegate?.eventLoadRequest(in: self, between: visibleDateRange.lowerBound, and: visibleDateRange.upperBound)
+        delegate?.eventLoadRequest?(in: self, between: visibleDateRange.lowerBound, and: visibleDateRange.upperBound)
     }
 
     // All EventData of events currently visible on screen
@@ -238,7 +238,7 @@ open class WeekView: UIView {
      */
     func dayViewCellWasLongPressed(_ dayViewCell: DayViewCell, at hours: Int, and minutes: Int) {
         let date = dayViewCell.date.getDateWithTime(hours: hours, minutes: minutes, seconds: 0)
-        self.delegate?.didLongPressDayView(in: self, atDate: date)
+        self.delegate?.didLongPressDayView?(in: self, atDate: date)
     }
     
     /**
@@ -260,7 +260,7 @@ open class WeekView: UIView {
      Method delegates event requests and sends a callback with start and end Date up to the WeekViewDelegate.
      */
     func requestEvents(between startDate: DayDate, and endDate: DayDate) {
-        self.delegate?.eventLoadRequest(in: self, between: startDate.dateObj, and: endDate.dateObj)
+        self.delegate?.eventLoadRequest?(in: self, between: startDate.dateObj, and: endDate.dateObj)
     }
 
     // MARK: - INTERNAL FUNCTIONS -
@@ -556,11 +556,11 @@ extension WeekView {
  Protocol methods.
  */
 @objc public protocol WeekViewDelegate: class {
-    func didLongPressDayView(in weekView: WeekView, atDate date: Date)
+    @objc optional func didLongPressDayView(in weekView: WeekView, atDate date: Date)
 
     func didTapEvent(in weekView: WeekView, withId eventId: String)
 
-    func eventLoadRequest(in weekView: WeekView, between startDate: Date, and endDate: Date)
+    @objc optional func eventLoadRequest(in weekView: WeekView, between startDate: Date, and endDate: Date)
     
     func didTapDayView(in weekView: WeekView, atDate date: Date)
 
@@ -587,9 +587,4 @@ public struct TextVariables {
     static func updateDayLabelCurrentFont () {
         dayLabelCurrentFont = dayLabelDefaultFont.withSize(dayLabelCurrentFontSize)
     }
-}
-
-extension WeekViewDelegate{
-    func didLongPressDayView(in weekView: WeekView, atDate date: Date){}
-    func eventLoadRequest(in weekView: WeekView, between startDate: Date, and endDate: Date){}
 }
