@@ -588,3 +588,8 @@ public struct TextVariables {
         dayLabelCurrentFont = dayLabelDefaultFont.withSize(dayLabelCurrentFontSize)
     }
 }
+
+extension WeekViewDelegate{
+    func didLongPressDayView(in weekView: WeekView, atDate date: Date){}
+    func eventLoadRequest(in weekView: WeekView, between startDate: Date, and endDate: Date){}
+}
