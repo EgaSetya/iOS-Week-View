@@ -24,6 +24,7 @@
                 <outlet property="topLeftBufferHeightConstraint" destination="Dvx-xn-aeX" id="5r3-3w-UKh"/>
                 <outlet property="topLeftBufferView" destination="1h4-ry-XKA" id="kPl-ag-gdv"/>
                 <outlet property="topLeftBufferWidthConstraint" destination="qqE-Ft-Owf" id="Sab-wO-FN9"/>
+                <outlet property="topLeftTimeTitleLabel" destination="rUr-yz-okr" id="hKQ-Km-7HZ"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -70,17 +71,17 @@
                         <constraint firstAttribute="width" constant="375" id="x5a-o6-Osn"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I65-sh-Lio">
-                    <rect key="frame" x="174" y="316" width="27" height="35"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I65-sh-Lio">
+                    <rect key="frame" x="-1" y="0.0" width="27" height="35"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jam" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rUr-yz-okr">
-                            <rect key="frame" x="0.0" y="0.0" width="27" height="20"/>
+                            <rect key="frame" x="0.0" y="0.0" width="27" height="35"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h2U-Zh-S4T">
-                            <rect key="frame" x="22" y="10" width="1" height="0.0"/>
+                            <rect key="frame" x="22" y="10" width="1" height="15"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="1" id="LJF-iY-lD5"/>

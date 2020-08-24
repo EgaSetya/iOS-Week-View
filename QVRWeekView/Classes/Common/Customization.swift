@@ -828,6 +828,18 @@ public extension WeekView {
             self.dayScrollView.setVelocityOffsetMultiplier(to: multiplier)
         }
     }
+    
+    /**
+     Change wording of time title on the left of schedule view
+     */
+    @objc var timeTitleText: String {
+        get {
+            return self.topLeftTimeTitleLabel.text ?? ""
+        }
+        set(text) {
+            self.topLeftTimeTitleLabel.text = text
+        }
+    }
 }
 
 // Customization extension for FontVariables.

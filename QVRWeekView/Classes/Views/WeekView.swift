@@ -18,6 +18,7 @@ open class WeekView: UIView {
     @IBOutlet var topBarView: UIView!
     @IBOutlet var topBarHourView: UIView!
     @IBOutlet var topLeftBufferView: UIView!
+    @IBOutlet var topLeftTimeTitleLabel: UILabel!
     @IBOutlet var sideBarView: UIView!
     @IBOutlet var dayScrollView: DayScrollView!
 
